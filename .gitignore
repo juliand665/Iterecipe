@@ -1,0 +1,6 @@
+## Xcode User Data
+xcuserdata/
+
+# Swift Package Manager
+/.swiftpm
+*.xcloc
