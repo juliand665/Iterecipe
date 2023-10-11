@@ -55,25 +55,10 @@ extension Note: ExpressibleByStringLiteral {
 struct Ingredient: Codable, Identifiable {
 	let id = UUID()
 	
-	var quantity: Quantity?
 	var item = ""
 	
 	private enum CodingKeys: String, CodingKey {
-		case quantity
 		case item
-	}
-	
-	struct Quantity: Codable {
-		var amount: Double?
-		var unit: Unit?
-	}
-	
-	enum Unit: Codable, Hashable {
-		case grams
-		case milliliters
-		case teaspoons
-		case tablespoons
-		case custom(String)
 	}
 }
 
@@ -122,13 +107,13 @@ extension Recipe {
 		title: "Example Recipe",
 		source: "www.example.com/recipes/example",
 		ingredients: [
-			Ingredient(quantity: .init(amount: 42, unit: .grams), item: "sugar"),
-			Ingredient(quantity: .init(amount: 0.5, unit: .teaspoons), item: "salt"),
+			Ingredient(item: "42 g sugar"),
+			Ingredient(item: "0.5 tsp salt"),
 			Ingredient(item: "freshly-ground black pepper"),
 			Ingredient(item: "freshly-ground black pepper again but this time it's much longer"),
-			Ingredient(quantity: .init(amount: 250, unit: .milliliters), item: "milk"),
-			Ingredient(quantity: .init(amount: 3), item: "eggs"),
-			Ingredient(quantity: .init(amount: 1, unit: .custom("stick")), item: "butter, melted, browned to a dark amber color"),
+			Ingredient(item: "250 mL milk"),
+			Ingredient(item: "3 eggs"),
+			Ingredient(item: "1 stick butter, melted, browned to a dark amber color"),
 		],
 		steps: [
 			"The first step.",
@@ -137,7 +122,7 @@ extension Recipe {
 			"The fourth step.",
 			"One final step to finish it all up and get it out there after all this work to wrap to a new line.",
 		],
-		notes: ["a note", "another note"],
+		notes: ["a note", "another note that is considerably longer and thus takes multiple lines to display"],
 		image: nil
 	)
 }

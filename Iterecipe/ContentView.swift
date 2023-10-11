@@ -132,21 +132,11 @@ struct ContentView: View {
 		}
 	}
 	
-	@ScaledMetric private var quantityWidth = 80
-	@ScaledMetric private var quantitySpacing = 4
-	
 	private var ingredients: some View {
 		section("Ingredients", systemImage: "carrot") {
 			ForEach($recipe.ingredients) { $ingredient in
-				HStack(alignment: .firstTextBaseline, spacing: quantitySpacing) {
-					TextField("Quantity", value: $ingredient.quantity, formatter: Ingredient.Quantity.Formatter())
-						.fontWeight(.medium)
-						.multilineTextAlignment(.trailing)
-						.frame(width: quantityWidth)
-					
-					TextField("Item", text: $ingredient.item, axis: .vertical)
-						.frame(maxWidth: .infinity, alignment: .leading)
-				}
+				TextField("Item", text: $ingredient.item, axis: .vertical)
+					.frame(maxWidth: .infinity, alignment: .leading)
 			}
 			
 			Button {
@@ -209,75 +199,5 @@ private struct PreviewWrapper: View {
 	
 	var body: some View {
 		ContentView(recipe: $recipe)
-	}
-}
-
-extension Ingredient.Quantity {
-	private static let formatter = NumberFormatter() <- {
-		$0.maximumFractionDigits = 3
-	}
-	
-	var text: String {
-		Array {
-			if let amount = amount {
-				Self.formatter.string(from: amount as NSNumber)!
-			}
-			unit.map(\.symbol)
-		}.joined(separator: " ")
-	}
-	
-	private static let numberRegex = "[0-9]([.][0-9])?"
-	init(text: String) {
-		let amountRange = text.range(of: Self.numberRegex, options: .regularExpression)
-		if let amountRange = amountRange {
-			self.amount = Double(text[amountRange])!
-		}
-		
-		let unitPart = text[(amountRange?.lowerBound ?? text.startIndex)...]
-			.trimmingCharacters(in: .whitespaces)
-		self.unit = unitPart.isEmpty ? nil : .init(symbol: unitPart)
-	}
-	
-	final class Formatter: Foundation.Formatter {
-		override func string(for obj: Any?) -> String? {
-			(obj as? Ingredient.Quantity)?.text
-		}
-		
-		override func getObjectValue(_ obj: AutoreleasingUnsafeMutablePointer<AnyObject?>?, for string: String, errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
-			obj?.pointee = Ingredient.Quantity(text: string) as AnyObject
-			return true
-		}
-	}
-}
-
-extension Ingredient.Unit {
-	private static let symbolsByUnit: [Self: String] = [
-		.grams: "g",
-		.milliliters: "mL",
-		.teaspoons: "tsp",
-		.tablespoons: "tbsp",
-	]
-	private static let unitsBySymbol = Dictionary(uniqueKeysWithValues: symbolsByUnit.map { ($1, $0) })
-	private static let unitsByLowercaseSymbol = Dictionary(uniqueKeysWithValues: unitsBySymbol.map { ($0.lowercased(), $1) })
-	
-	var symbol: String {
-		switch self {
-		case .grams:
-			return "g"
-		case .milliliters:
-			return "mL"
-		case .teaspoons:
-			return "tsp"
-		case .tablespoons:
-			return "tbsp"
-		case .custom(let symbol):
-			return symbol
-		}
-	}
-	
-	init(symbol: String) {
-		self = Self.unitsBySymbol[symbol]
-		?? Self.unitsByLowercaseSymbol[symbol.lowercased()]
-		?? .custom(symbol)
 	}
 }
