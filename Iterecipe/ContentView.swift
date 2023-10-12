@@ -3,7 +3,6 @@ import SwiftUI
 struct ContentView: View {
 	@Binding var recipe: Recipe
 	@State var revisionIndexFromEnd = 0
-	@Environment(\.undoManager) private var undoManager
 	
 	var revisionIndex: Int {
 		recipe.revisions.count - 1 - revisionIndexFromEnd
@@ -53,22 +52,8 @@ struct ContentView: View {
 					.opacity(0)
 			)
 			.toolbar {
-				ToolbarItemGroup(placement: .primaryAction) {
-					HStack {
-						Button {
-							undoManager!.undo()
-						} label: {
-							Label("Undo", systemImage: "arrow.uturn.backward.circle")
-						}
-						.disabled(undoManager?.canUndo != true)
-						
-						Button {
-							undoManager!.redo()
-						} label: {
-							Label("Redo", systemImage: "arrow.uturn.forward.circle")
-						}
-						.disabled(undoManager?.canRedo != true)
-					}
+				HStack {
+					UndoRedoButtons()
 				}
 			}
 		}

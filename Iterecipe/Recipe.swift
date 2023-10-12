@@ -15,20 +15,20 @@ struct Recipe: Codable {
 	struct Revision: Codable {
 		var id = ObjectID<Self>()
 		var dateCreated = Date()
-		var ingredients: [Ingredient] = []
-		var steps: [Step] = []
+		var ingredients: [TextItem] = []
+		var steps: [TextItem] = []
 		var notes: [Note] = []
 	}
 }
 
-struct Step: Codable, Identifiable {
+struct TextItem: Codable, Identifiable {
 	var id = ObjectID<Self>()
-	var description = ""
+	var text = ""
 }
 
-extension Step: ExpressibleByStringLiteral {
+extension TextItem: ExpressibleByStringLiteral {
 	init(stringLiteral value: StringLiteralType) {
-		self.init(description: value)
+		self.init(text: value)
 	}
 }
 
@@ -42,11 +42,6 @@ extension Note: ExpressibleByStringLiteral {
 	init(stringLiteral value: StringLiteralType) {
 		self.init(contents: value)
 	}
-}
-
-struct Ingredient: Codable, Identifiable {
-	var id = ObjectID<Self>()
-	var item = ""
 }
 
 struct ObjectID<Object>: Hashable, Codable {
@@ -75,13 +70,13 @@ extension Recipe {
 		revisions: [
 			.init(
 				ingredients: [
-					Ingredient(item: "42 g sugar"),
-					Ingredient(item: "0.5 tsp salt"),
-					Ingredient(item: "freshly-ground black pepper"),
-					Ingredient(item: "freshly-ground black pepper again but this time it's much longer"),
-					Ingredient(item: "250 mL milk"),
-					Ingredient(item: "3 eggs"),
-					Ingredient(item: "1 stick butter, melted, browned to a dark amber color"),
+					"42 g sugar",
+					"0.5 tsp salt",
+					"freshly-ground black pepper",
+					"freshly-ground black pepper again but this time it's much longer",
+					"250 mL milk",
+					"3 eggs",
+					"1 stick butter, melted, browned to a dark amber color",
 				],
 				steps: [
 					"The first step.",

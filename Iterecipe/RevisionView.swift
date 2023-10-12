@@ -24,44 +24,50 @@ struct RevisionView: View {
 		}
 	}
 	
+	@State private var isEditingIngredients = false
+	
 	private func ingredients() -> some View {
-		RecipeSection("Ingredients", systemImage: "carrot") {
-			Button("Edit") {} // TODO
+		RecipeSection("Ingredients", systemImage: "basket") {
+			Button("Edit") { isEditingIngredients = true }
 		} content: {
-			ForEach($revision.ingredients) { $ingredient in
-				TextField("Item", text: $ingredient.item, axis: .vertical)
+			ForEach(revision.ingredients) { ingredient in
+				Text(ingredient.text)
 					.frame(maxWidth: .infinity, alignment: .leading)
 			}
-			
-			Button {
-				revision.ingredients.append(.init())
-			} label: {
-				Label("Add Ingredient", systemImage: "plus")
-			}
-			.frame(maxWidth: .infinity, alignment: .leading)
+		}
+		.navigationDestination(isPresented: $isEditingIngredients) {
+			TextItemEditor(
+				items: $revision.ingredients,
+				textPlaceholder: "Ingredient",
+				addButtonLabel: "Add Ingredient"
+			)
+			.navigationTitle("Ingredients")
 		}
 	}
 	
+	@State private var isEditingProcess = false
+	
 	private func process() -> some View {
 		RecipeSection("Process", systemImage: "list.number") {
-			Button("Edit") {} // TODO
+			Button("Edit") { isEditingProcess = true }
 		} content: {
-			ForEach($revision.steps) { $step in
-				TextField("Step Description", text: $step.description, axis: .vertical)
+			ForEach(revision.steps) { step in
+				Text(step.text)
 					.frame(maxWidth: .infinity, alignment: .leading)
 			}
-			
-			Button {
-				revision.steps.append(.init())
-			} label: {
-				Label("Add Step", systemImage: "plus")
-			}
-			.frame(maxWidth: .infinity, alignment: .leading)
+		}
+		.navigationDestination(isPresented: $isEditingProcess) {
+			TextItemEditor(
+				items: $revision.steps,
+				textPlaceholder: "Step Description",
+				addButtonLabel: "Add Step"
+			)
+			.navigationTitle("Steps")
 		}
 	}
 	
 	private func notes() -> some View {
-		RecipeSection("Notes", systemImage: "note") {
+		RecipeSection("Notes", systemImage: "note.text") {
 			Button {
 				revision.notes.insert(.init(), at: 0)
 			} label: {
@@ -69,31 +75,24 @@ struct RevisionView: View {
 			}
 			.labelStyle(.iconOnly)
 		} content: {
-			if revision.notes.isEmpty {
-				Text("Press \(Image(systemName: "plus")) above to add a note.")
-					.font(.footnote)
-					.foregroundStyle(.secondary)
-					.frame(maxWidth: .infinity)
-			} else {
-				ForEach($revision.notes) { $note in
-					VStack {
-						HStack(alignment: .lastTextBaseline) {
-							Text(note.dateCreated, format: .dateTime)
-								.foregroundStyle(.secondary)
-								.font(.footnote)
-							
-							Spacer()
-							
-							Button {
-								revision.notes.removeAll { $0.id == note.id }
-							} label: {
-								Image(systemName: "trash")
-							}
+			ForEach($revision.notes) { $note in
+				VStack {
+					HStack(alignment: .lastTextBaseline) {
+						Text(note.dateCreated, format: .dateTime)
+							.foregroundStyle(.secondary)
+							.font(.footnote)
+						
+						Spacer()
+						
+						Button {
+							revision.notes.removeAll { $0.id == note.id }
+						} label: {
+							Image(systemName: "trash")
 						}
-						Divider()
-						TextField("Note", text: $note.contents, axis: .vertical)
-							.frame(maxWidth: .infinity, alignment: .leading)
 					}
+					Divider()
+					TextField("Note", text: $note.contents, axis: .vertical)
+						.frame(maxWidth: .infinity, alignment: .leading)
 				}
 			}
 		}
@@ -132,8 +131,9 @@ private struct RecipeSection<HeaderButton: View, Content: View>: View {
 				
 				headerButton
 			}
-			.font(.headline)
+			.font(.title3.weight(.semibold))
 			.padding(.horizontal, boxPadding)
+			.padding(.bottom, boxPadding - 8)
 			
 			content
 				.padding(boxPadding)
