@@ -28,7 +28,9 @@ extension IterecipeDocument: FileDocument {
 	func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
 		.init(regularFileWithContents: try Self.encoder.encode(
 			ContentsWithMetadata(version: 0, recipe: recipe)
-		))
+		)) <- {
+			$0.preferredFilename = "Recipe.iterecipe"
+		}
 	}
 	
 	private struct Metadata: Codable {

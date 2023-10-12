@@ -11,6 +11,8 @@
 		B952C3B52AD6417700500055 /* HandyOperators in Frameworks */ = {isa = PBXBuildFile; productRef = B952C3B42AD6417700500055 /* HandyOperators */; };
 		B952C3B72AD6424100500055 /* AlignedLabels in Frameworks */ = {isa = PBXBuildFile; productRef = B952C3B62AD6424100500055 /* AlignedLabels */; };
 		B952C3B92AD6424100500055 /* ArrayBuilder in Frameworks */ = {isa = PBXBuildFile; productRef = B952C3B82AD6424100500055 /* ArrayBuilder */; };
+		B952C3BC2AD78A9000500055 /* SwiftUI+CrossPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = B952C3BB2AD78A9000500055 /* SwiftUI+CrossPlatform.swift */; };
+		B952C3BE2AD78C2F00500055 /* RecipeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B952C3BD2AD78C2F00500055 /* RecipeImage.swift */; };
 		B966AA5E2AD41F2F003AD8B4 /* IterecipeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B966AA5D2AD41F2F003AD8B4 /* IterecipeApp.swift */; };
 		B966AA602AD41F2F003AD8B4 /* IterecipeDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = B966AA5F2AD41F2F003AD8B4 /* IterecipeDocument.swift */; };
 		B966AA622AD41F2F003AD8B4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B966AA612AD41F2F003AD8B4 /* ContentView.swift */; };
@@ -20,6 +22,8 @@
 
 /* Begin PBXFileReference section */
 		B91B0D2126339B98007CB84A /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		B952C3BB2AD78A9000500055 /* SwiftUI+CrossPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+CrossPlatform.swift"; sourceTree = "<group>"; };
+		B952C3BD2AD78C2F00500055 /* RecipeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeImage.swift; sourceTree = "<group>"; };
 		B966AA5B2AD41F2F003AD8B4 /* Iterecipe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Iterecipe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B966AA5D2AD41F2F003AD8B4 /* IterecipeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IterecipeApp.swift; sourceTree = "<group>"; };
 		B966AA5F2AD41F2F003AD8B4 /* IterecipeDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IterecipeDocument.swift; sourceTree = "<group>"; };
@@ -68,6 +72,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B952C3BA2AD78A7F00500055 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B952C3BB2AD78A9000500055 /* SwiftUI+CrossPlatform.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		B966AA5C2AD41F2F003AD8B4 /* Iterecipe */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +87,8 @@
 				B966AA5F2AD41F2F003AD8B4 /* IterecipeDocument.swift */,
 				B966AA612AD41F2F003AD8B4 /* ContentView.swift */,
 				B91B0D2126339B98007CB84A /* Recipe.swift */,
+				B952C3BD2AD78C2F00500055 /* RecipeImage.swift */,
+				B952C3BA2AD78A7F00500055 /* Helpers */,
 				B966AA632AD41F32003AD8B4 /* Assets.xcassets */,
 				B966AA652AD41F32003AD8B4 /* Info.plist */,
 				B966AA662AD41F32003AD8B4 /* Iterecipe.entitlements */,
@@ -174,7 +188,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B966AA5E2AD41F2F003AD8B4 /* IterecipeApp.swift in Sources */,
+				B952C3BE2AD78C2F00500055 /* RecipeImage.swift in Sources */,
 				B966AA602AD41F2F003AD8B4 /* IterecipeDocument.swift in Sources */,
+				B952C3BC2AD78A9000500055 /* SwiftUI+CrossPlatform.swift in Sources */,
 				B966AA622AD41F2F003AD8B4 /* ContentView.swift in Sources */,
 				B952C3B22AD6411F00500055 /* Recipe.swift in Sources */,
 			);
