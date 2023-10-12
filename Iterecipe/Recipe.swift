@@ -1,18 +1,23 @@
 import Foundation
+import HandyOperators
 
 struct Recipe: Codable {
-	var title = "Untitled Recipe"
+	var title = ""
 	var source = ""
 	var image: RecipeImage?
 	
 	var revisions: [Revision] = [.init()]
-	var notes: [Note] = []
+	
+	mutating func addRevision() {
+		revisions.append(revisions.last! <- { $0.notes = [] })
+	}
 	
 	struct Revision: Codable {
 		var id = ObjectID<Self>()
 		var dateCreated = Date()
 		var ingredients: [Ingredient] = []
 		var steps: [Step] = []
+		var notes: [Note] = []
 	}
 }
 
@@ -84,9 +89,9 @@ extension Recipe {
 					"The third step, which is a lot longer than the other steps we've seen so far.",
 					"The fourth step.",
 					"One final step to finish it all up and get it out there after all this work to wrap to a new line.",
-				]
+				],
+				notes: ["a note", "another note that is considerably longer and thus takes multiple lines to display"]
 			)
-		],
-		notes: ["a note", "another note that is considerably longer and thus takes multiple lines to display"]
+		]
 	)
 }

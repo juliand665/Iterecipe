@@ -28,9 +28,14 @@ func unfocusTextField() {
 
 extension Color {
 #if os(macOS)
-	static let recipeBackground = Self(.textBackgroundColor)
+	static let textBackground = Self(.textBackgroundColor)
 #else
-	static let recipeBackground = Self(.systemBackground)
+	static let textBackground = Self(.secondarySystemGroupedBackground)
+#endif
+#if os(macOS)
+	static let canvasBackground = Self(.windowBackground)
+#else
+	static let canvasBackground = Self(.systemGroupedBackground)
 #endif
 }
 
