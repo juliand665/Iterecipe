@@ -11,22 +11,7 @@ struct TextItemEditor: View {
 	var body: some View {
 		List {
 			ForEach($items, editActions: .all) { $item in
-				TextField(textPlaceholder, text: $item.text, axis: .vertical)
-					.focused($focusedItem, equals: item.id)
-					.disabled(editMode?.wrappedValue.isEditing == true)
-					.onSubmit {
-						let nextItem = items
-							.drop { $0.id != item.id }
-							.dropFirst()
-							.first?.id
-						if let nextItem {
-							focusedItem = nextItem
-						} else {
-							let newItem = TextItem()
-							items.append(newItem)
-							focusedItem = newItem.id
-						}
-					}
+				itemRow($item: $item)
 			}
 			
 			Button {
@@ -35,6 +20,7 @@ struct TextItemEditor: View {
 				Label(addButtonLabel, systemImage: "plus")
 			}
 		}
+		.scrollDismissesKeyboard(.interactively)
 		.navigationBarTitleDisplayMode(.inline)
 		.toolbar {
 			EditButton()
@@ -44,6 +30,41 @@ struct TextItemEditor: View {
 				UndoRedoButtons()
 			}
 		}
+		.onChange(of: focusedItem) {
+			if focusedItem == nil {
+				items.removeAll { $0.text.isEmpty }
+			}
+		}
+	}
+	
+	func itemRow(@Binding item: TextItem) -> some View {
+		func advance() {
+			let nextItem = items
+				.drop { $0.id != item.id }
+				.dropFirst()
+				.first?.id
+			if let nextItem {
+				focusedItem = nextItem
+			} else {
+				let newItem = TextItem()
+				items.append(newItem)
+				focusedItem = newItem.id
+			}
+		}
+		
+		return TextField(textPlaceholder, text: $item.text, axis: .vertical)
+			.focused($focusedItem, equals: item.id)
+			.disabled(editMode?.wrappedValue.isEditing == true)
+			.submitLabel(.next)
+			.onSubmit(advance)
+			.onChange(of: item.text) {
+				let trimmed = item.text.trimmingCharacters(in: .newlines)
+				if trimmed.count != item.text.count {
+					// pressed return
+					item.text = trimmed
+					advance()
+				}
+			}
 	}
 }
 
