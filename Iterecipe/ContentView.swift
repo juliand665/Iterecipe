@@ -116,7 +116,9 @@ struct ContentView: View {
 	func revisionSwitcher() -> some View {
 		HStack {
 			CircleButton("Previous Revision", systemImage: "chevron.left") {
-				revisionIndexFromEnd += 1
+				withAnimation {
+					revisionIndexFromEnd += 1
+				}
 			}
 			.disabled(revisionIndexFromEnd >= recipe.revisions.count - 1)
 			
@@ -125,14 +127,18 @@ struct ContentView: View {
 					.frame(maxWidth: .infinity)
 				
 				CircleButton("Add New Revision", systemImage: "plus") {
-					recipe.addRevision()
+					withAnimation {
+						recipe.addRevision()
+					}
 				}
 			} else {
 				Text("Revision \(revisionIndex + 1)/\(recipe.revisions.count)")
 					.frame(maxWidth: .infinity)
 				
 				CircleButton("Next Revision", systemImage: "chevron.right") {
-					revisionIndexFromEnd -= 1
+					withAnimation {
+						revisionIndexFromEnd -= 1
+					}
 				}
 			}
 		}
