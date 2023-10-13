@@ -24,24 +24,21 @@ struct RevisionView: View {
 		}
 	}
 	
-	@State private var isEditingIngredients = false
-	
 	private func ingredients() -> some View {
 		RecipeSection("Ingredients", systemImage: "basket") {
-			Button("Edit") { isEditingIngredients = true }
+			NavigationLink("Edit") {
+				TextItemEditor(
+					items: $revision.ingredients,
+					textPlaceholder: "Ingredient",
+					addButtonLabel: "Add Ingredient"
+				)
+				.navigationTitle("Ingredients")
+			}
 		} content: {
 			ForEach(revision.ingredients) { ingredient in
 				Text(ingredient.text)
 					.frame(maxWidth: .infinity, alignment: .leading)
 			}
-		}
-		.navigationDestination(isPresented: $isEditingIngredients) {
-			TextItemEditor(
-				items: $revision.ingredients,
-				textPlaceholder: "Ingredient",
-				addButtonLabel: "Add Ingredient"
-			)
-			.navigationTitle("Ingredients")
 		}
 	}
 	
@@ -49,20 +46,19 @@ struct RevisionView: View {
 	
 	private func process() -> some View {
 		RecipeSection("Process", systemImage: "list.number") {
-			Button("Edit") { isEditingProcess = true }
+			NavigationLink("Edit") {
+				TextItemEditor(
+					items: $revision.steps,
+					textPlaceholder: "Step Description",
+					addButtonLabel: "Add Step"
+				)
+				.navigationTitle("Steps")
+			}
 		} content: {
 			ForEach(revision.steps) { step in
 				Text(step.text)
 					.frame(maxWidth: .infinity, alignment: .leading)
 			}
-		}
-		.navigationDestination(isPresented: $isEditingProcess) {
-			TextItemEditor(
-				items: $revision.steps,
-				textPlaceholder: "Step Description",
-				addButtonLabel: "Add Step"
-			)
-			.navigationTitle("Steps")
 		}
 	}
 	

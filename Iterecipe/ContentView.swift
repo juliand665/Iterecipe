@@ -9,9 +9,9 @@ struct ContentView: View {
 	}
 	
 	var body: some View {
-		NavigationStack {
-			ScrollView {
-				VStack(spacing: 32) {
+		ScrollView {
+			VStack(spacing: 32) {
+				VStack {
 					HStack(alignment: .lastTextBaseline) {
 						VStack(alignment: .leading, spacing: 0) {
 							TextField("Recipe Title", text: $recipe.title, axis: .vertical)
@@ -30,31 +30,31 @@ struct ContentView: View {
 							}
 						}
 					}
-					
-					VStack {
-						revisionSwitcher()
-						Divider()
-					}
-					
-					RevisionView(revision: $recipe.revisions[revisionIndex])
 				}
-				.padding()
-				.textFieldStyle(.plain)
+				
+				VStack {
+					revisionSwitcher()
+					Divider()
+				}
+				
+				RevisionView(revision: $recipe.revisions[revisionIndex])
 			}
-			.scrollDismissesKeyboard(.interactively)
-			.background(Color.canvasBackground)
-			//.textFieldsWithoutFocusRing()
-			.background( // cheeky keyboard shortcuts lol
-				Group {
-					Button("Done", action: unfocusTextField).keyboardShortcut(.escape, modifiers: [])
-					Button("Done", action: unfocusTextField).keyboardShortcut(.return, modifiers: .command)
-				}
-					.opacity(0)
-			)
-			.toolbar {
-				HStack {
-					UndoRedoButtons()
-				}
+			.padding()
+			.textFieldStyle(.plain)
+		}
+		.scrollDismissesKeyboard(.interactively)
+		.background(Color.canvasBackground)
+		//.textFieldsWithoutFocusRing()
+		.background( // cheeky keyboard shortcuts lol
+			Group {
+				Button("Done", action: unfocusTextField).keyboardShortcut(.escape, modifiers: [])
+				Button("Done", action: unfocusTextField).keyboardShortcut(.return, modifiers: .command)
+			}
+				.opacity(0)
+		)
+		.toolbar {
+			HStack {
+				UndoRedoButtons()
 			}
 		}
 	}
