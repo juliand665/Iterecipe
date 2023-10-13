@@ -1,31 +1,24 @@
-import Foundation
+import SwiftUI
 import CoreImage
-import UniformTypeIdentifiers
+import CoreTransferable
 import HandyOperators
 
 struct RecipeImage: Codable {
 	var imageData: Data
-	var cgImage: CGImage
+	var image: Image
 	
-	public init(_ cgImage: CGImage) throws {
-		self.cgImage = cgImage
-		
-		// store as HEIF data
-		let data = CFDataCreateMutable(nil, 0)! // no allocator, unlimited capacity
-		let destination = try CGImageDestinationCreateWithData(data, UTType.heic.identifier as CFString, 1, nil) // 1 image, no options
-		??? SerializationError.destinationCreationFailed
-		CGImageDestinationAddImage(destination, cgImage, [
-			kCGImageDestinationLossyCompressionQuality: 0.8,
-			// TODO: this should also contain orientation information
-		] as CFDictionary)
-		guard CGImageDestinationFinalize(destination) else { throw SerializationError.finalizeFailed }
-		self.imageData = data as Data
+	public init(imageData: Data) throws {
+		self.imageData = imageData
+		let source = try CGImageSourceCreateWithData(imageData as CFData, nil) ??? SerializationError.sourceCreationFailed
+		let cgImage = try CGImageSourceCreateImageAtIndex(source, 0, nil) ??? SerializationError.sourceMissingImage
+		let properties = CGImageSourceCopyPropertiesAtIndex(source, 0, nil) as NSDictionary?
+		let orientation = (properties?[kCGImagePropertyOrientation] as? UInt32)
+			.flatMap(CGImagePropertyOrientation.init(rawValue:)) ?? .up
+		self.image = Image(cgImage, scale: 1, orientation: orientation.swiftUIOrientation, label: Text("Recipe Image"))
 	}
 	
 	public init(from decoder: Decoder) throws {
-		self.imageData = try decoder.singleValueContainer().decode(Data.self)
-		let source = try CGImageSourceCreateWithData(imageData as CFData, nil) ??? SerializationError.sourceCreationFailed
-		self.cgImage = try CGImageSourceCreateImageAtIndex(source, 0, nil) ??? SerializationError.sourceMissingImage
+		try self.init(imageData: decoder.singleValueContainer().decode(Data.self))
 	}
 	
 	public func encode(to encoder: Encoder) throws {
@@ -42,25 +35,23 @@ struct RecipeImage: Codable {
 	}
 }
 
-private final class ImageDestination {
-	let destination: CGImageDestination
-	
-	init?(data: CFMutableData, type: UTType, count: Int = 1, options: CFDictionary? = nil) {
-		guard let destination = CGImageDestinationCreateWithData(data, type.identifier as CFString, count, options) else { return nil }
-		self.destination = destination
-	}
-	
-	func add(_ image: CGImage, properties: CFDictionary? = nil) {
-		CGImageDestinationAddImage(destination, image, properties)
-	}
-	
-	func finalize() throws {
-		guard CGImageDestinationFinalize(destination) else {
-			throw SaveError.finalizeFailed
+private extension CGImagePropertyOrientation {
+	var swiftUIOrientation: Image.Orientation {
+		switch self {
+		case .up: .up
+		case .upMirrored: .upMirrored
+		case .down: .down
+		case .downMirrored: .downMirrored
+		case .left: .left
+		case .leftMirrored: .leftMirrored
+		case .right: .right
+		case .rightMirrored: .rightMirrored
 		}
 	}
-	
-	enum SaveError: Error {
-		case finalizeFailed
+}
+
+extension RecipeImage: Transferable {
+	static var transferRepresentation: some TransferRepresentation {
+		DataRepresentation(importedContentType: .image) { try Self(imageData: $0) }
 	}
 }

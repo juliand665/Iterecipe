@@ -1,8 +1,13 @@
 import SwiftUI
+import PhotosUI
 
+@MainActor
 struct ContentView: View {
 	@Binding var recipe: Recipe
 	@State var revisionIndexFromEnd = 0
+	@State var isPickingImage = false
+	@State var selectedImage: PhotosPickerItem?
+	@State var imageError = ErrorContainer()
 	
 	var revisionIndex: Int {
 		recipe.revisions.count - 1 - revisionIndexFromEnd
@@ -12,6 +17,10 @@ struct ContentView: View {
 		ScrollView {
 			VStack(spacing: 32) {
 				VStack {
+					recipeImage()
+					
+					Divider()
+					
 					HStack(alignment: .lastTextBaseline) {
 						VStack(alignment: .leading, spacing: 0) {
 							TextField("Recipe Title", text: $recipe.title, axis: .vertical)
@@ -55,6 +64,51 @@ struct ContentView: View {
 		.toolbar {
 			HStack {
 				UndoRedoButtons()
+			}
+		}
+	}
+	
+	func recipeImage() -> some View {
+		VStack {
+			if let image = recipe.image {
+				image.image
+					.resizable()
+					.clipShape(RoundedRectangle(cornerRadius: 12))
+					.aspectRatio(contentMode: .fit)
+					.frame(maxHeight: 300)
+					.contextMenu {
+						Button {
+							isPickingImage = true
+						} label: {
+							Label("Replace Image", systemImage: "photo.on.rectangle.angled")
+						}
+						
+						Button {
+							recipe.image = nil
+						} label: {
+							Label("Remove Image", systemImage: "xmark")
+						}
+					}
+					.padding(.bottom, 4)
+			} else {
+				Button {
+					isPickingImage = true
+				} label: {
+					Label("Add Image", systemImage: "photo.badge.plus")
+				}
+			}
+		}
+		.photosPicker(
+			isPresented: $isPickingImage, selection: $selectedImage,
+			matching: .images, preferredItemEncoding: .current
+		)
+		.task(id: selectedImage) {
+			guard let selectedImage else { return }
+			$imageError.task(errorTitle: "Image could not be set!") {
+				let image = try await selectedImage.loadTransferable(type: RecipeImage.self)
+				guard self.selectedImage == selectedImage else { return } // changed in the meantime
+				self.selectedImage = nil
+				recipe.image = image
 			}
 		}
 	}

@@ -16,6 +16,7 @@
 		B952C3C02AD8242100500055 /* RevisionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B952C3BF2AD8242100500055 /* RevisionView.swift */; };
 		B952C3C22AD82B7A00500055 /* UndoRedoButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = B952C3C12AD82B7A00500055 /* UndoRedoButtons.swift */; };
 		B952C3C42AD8314900500055 /* TextItemEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B952C3C32AD8314900500055 /* TextItemEditor.swift */; };
+		B952C3C62AD8FBDF00500055 /* ErrorContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B952C3C52AD8FBDF00500055 /* ErrorContainer.swift */; };
 		B966AA5E2AD41F2F003AD8B4 /* IterecipeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B966AA5D2AD41F2F003AD8B4 /* IterecipeApp.swift */; };
 		B966AA602AD41F2F003AD8B4 /* IterecipeDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = B966AA5F2AD41F2F003AD8B4 /* IterecipeDocument.swift */; };
 		B966AA622AD41F2F003AD8B4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B966AA612AD41F2F003AD8B4 /* ContentView.swift */; };
@@ -30,6 +31,7 @@
 		B952C3BF2AD8242100500055 /* RevisionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevisionView.swift; sourceTree = "<group>"; };
 		B952C3C12AD82B7A00500055 /* UndoRedoButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoRedoButtons.swift; sourceTree = "<group>"; };
 		B952C3C32AD8314900500055 /* TextItemEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextItemEditor.swift; sourceTree = "<group>"; };
+		B952C3C52AD8FBDF00500055 /* ErrorContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorContainer.swift; sourceTree = "<group>"; };
 		B966AA5B2AD41F2F003AD8B4 /* Iterecipe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Iterecipe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B966AA5D2AD41F2F003AD8B4 /* IterecipeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IterecipeApp.swift; sourceTree = "<group>"; };
 		B966AA5F2AD41F2F003AD8B4 /* IterecipeDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IterecipeDocument.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				B966AA5F2AD41F2F003AD8B4 /* IterecipeDocument.swift */,
 				B91B0D2126339B98007CB84A /* Recipe.swift */,
 				B952C3BD2AD78C2F00500055 /* RecipeImage.swift */,
+				B952C3C52AD8FBDF00500055 /* ErrorContainer.swift */,
 				B952C3BA2AD78A7F00500055 /* Helpers */,
 				B966AA632AD41F32003AD8B4 /* Assets.xcassets */,
 				B966AA652AD41F32003AD8B4 /* Info.plist */,
@@ -202,6 +205,7 @@
 				B952C3C42AD8314900500055 /* TextItemEditor.swift in Sources */,
 				B966AA602AD41F2F003AD8B4 /* IterecipeDocument.swift in Sources */,
 				B952C3BC2AD78A9000500055 /* SwiftUI+CrossPlatform.swift in Sources */,
+				B952C3C62AD8FBDF00500055 /* ErrorContainer.swift in Sources */,
 				B966AA622AD41F2F003AD8B4 /* ContentView.swift in Sources */,
 				B952C3B22AD6411F00500055 /* Recipe.swift in Sources */,
 				B952C3C22AD82B7A00500055 /* UndoRedoButtons.swift in Sources */,
