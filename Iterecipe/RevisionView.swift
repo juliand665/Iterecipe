@@ -65,7 +65,9 @@ struct RevisionView: View {
 	private func notes() -> some View {
 		RecipeSection("Notes", systemImage: "note.text") {
 			Button {
-				revision.notes.insert(.init(), at: 0)
+				withAnimation {
+					revision.notes.insert(.init(), at: 0)
+				}
 			} label: {
 				Label("Add Note", systemImage: "plus")
 			}
@@ -81,12 +83,16 @@ struct RevisionView: View {
 						Spacer()
 						
 						Button {
-							revision.notes.removeAll { $0.id == note.id }
+							withAnimation {
+								revision.notes.removeAll { $0.id == note.id }
+							}
 						} label: {
 							Image(systemName: "trash")
 						}
 					}
+					
 					Divider()
+					
 					TextField("Note", text: $note.contents, axis: .vertical)
 						.frame(maxWidth: .infinity, alignment: .leading)
 				}
