@@ -21,6 +21,8 @@
 			<string>$(PRODUCT_BUNDLE_IDENTIFIER).iterecipe</string>
 		</dict>
 	</array>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>
