@@ -17,6 +17,9 @@
 		B952C3C22AD82B7A00500055 /* UndoRedoButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = B952C3C12AD82B7A00500055 /* UndoRedoButtons.swift */; };
 		B952C3C42AD8314900500055 /* TextItemEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B952C3C32AD8314900500055 /* TextItemEditor.swift */; };
 		B952C3C62AD8FBDF00500055 /* ErrorContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B952C3C52AD8FBDF00500055 /* ErrorContainer.swift */; };
+		B952C3C82AD9758000500055 /* RevisionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B952C3C72AD9758000500055 /* RevisionListView.swift */; };
+		B952C3CB2AD97A1800500055 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = B952C3CA2AD97A1800500055 /* Algorithms */; };
+		B952C3CD2ADA23B900500055 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B952C3CC2ADA23B900500055 /* Localizable.xcstrings */; };
 		B966AA5E2AD41F2F003AD8B4 /* IterecipeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B966AA5D2AD41F2F003AD8B4 /* IterecipeApp.swift */; };
 		B966AA602AD41F2F003AD8B4 /* IterecipeDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = B966AA5F2AD41F2F003AD8B4 /* IterecipeDocument.swift */; };
 		B966AA622AD41F2F003AD8B4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B966AA612AD41F2F003AD8B4 /* ContentView.swift */; };
@@ -32,6 +35,8 @@
 		B952C3C12AD82B7A00500055 /* UndoRedoButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoRedoButtons.swift; sourceTree = "<group>"; };
 		B952C3C32AD8314900500055 /* TextItemEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextItemEditor.swift; sourceTree = "<group>"; };
 		B952C3C52AD8FBDF00500055 /* ErrorContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorContainer.swift; sourceTree = "<group>"; };
+		B952C3C72AD9758000500055 /* RevisionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevisionListView.swift; sourceTree = "<group>"; };
+		B952C3CC2ADA23B900500055 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		B966AA5B2AD41F2F003AD8B4 /* Iterecipe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Iterecipe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B966AA5D2AD41F2F003AD8B4 /* IterecipeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IterecipeApp.swift; sourceTree = "<group>"; };
 		B966AA5F2AD41F2F003AD8B4 /* IterecipeDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IterecipeDocument.swift; sourceTree = "<group>"; };
@@ -47,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B952C3CB2AD97A1800500055 /* Algorithms in Frameworks */,
 				B952C3B72AD6424100500055 /* AlignedLabels in Frameworks */,
 				B952C3B52AD6417700500055 /* HandyOperators in Frameworks */,
 				B952C3B92AD6424100500055 /* ArrayBuilder in Frameworks */,
@@ -93,6 +99,7 @@
 			children = (
 				B966AA5D2AD41F2F003AD8B4 /* IterecipeApp.swift */,
 				B966AA612AD41F2F003AD8B4 /* ContentView.swift */,
+				B952C3C72AD9758000500055 /* RevisionListView.swift */,
 				B952C3BF2AD8242100500055 /* RevisionView.swift */,
 				B952C3C32AD8314900500055 /* TextItemEditor.swift */,
 				B952C3C12AD82B7A00500055 /* UndoRedoButtons.swift */,
@@ -102,6 +109,7 @@
 				B952C3C52AD8FBDF00500055 /* ErrorContainer.swift */,
 				B952C3BA2AD78A7F00500055 /* Helpers */,
 				B966AA632AD41F32003AD8B4 /* Assets.xcassets */,
+				B952C3CC2ADA23B900500055 /* Localizable.xcstrings */,
 				B966AA652AD41F32003AD8B4 /* Info.plist */,
 				B966AA662AD41F32003AD8B4 /* Iterecipe.entitlements */,
 				B966AA672AD41F32003AD8B4 /* Preview Content */,
@@ -137,6 +145,7 @@
 				B952C3B42AD6417700500055 /* HandyOperators */,
 				B952C3B62AD6424100500055 /* AlignedLabels */,
 				B952C3B82AD6424100500055 /* ArrayBuilder */,
+				B952C3CA2AD97A1800500055 /* Algorithms */,
 			);
 			productName = Iterecipe;
 			productReference = B966AA5B2AD41F2F003AD8B4 /* Iterecipe.app */;
@@ -172,6 +181,7 @@
 				B9737F642633B8C100F101F7 /* XCRemoteSwiftPackageReference "SwifUI-Missing-Pieces" */,
 				B9737F6F2634580400F101F7 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				B9C7F2EA26348B0D00447691 /* XCRemoteSwiftPackageReference "ArrayBuilder" */,
+				B952C3C92AD97A1800500055 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 			);
 			productRefGroup = B91B0D04263399FF007CB84A /* Products */;
 			projectDirPath = "";
@@ -189,6 +199,7 @@
 			files = (
 				B966AA692AD41F32003AD8B4 /* Preview Assets.xcassets in Resources */,
 				B966AA642AD41F32003AD8B4 /* Assets.xcassets in Resources */,
+				B952C3CD2ADA23B900500055 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +214,7 @@
 				B966AA5E2AD41F2F003AD8B4 /* IterecipeApp.swift in Sources */,
 				B952C3BE2AD78C2F00500055 /* RecipeImage.swift in Sources */,
 				B952C3C42AD8314900500055 /* TextItemEditor.swift in Sources */,
+				B952C3C82AD9758000500055 /* RevisionListView.swift in Sources */,
 				B966AA602AD41F2F003AD8B4 /* IterecipeDocument.swift in Sources */,
 				B952C3BC2AD78A9000500055 /* SwiftUI+CrossPlatform.swift in Sources */,
 				B952C3C62AD8FBDF00500055 /* ErrorContainer.swift in Sources */,
@@ -457,6 +469,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		B952C3C92AD97A1800500055 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
 		B9737F642633B8C100F101F7 /* XCRemoteSwiftPackageReference "SwifUI-Missing-Pieces" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:juliand665/SwifUI-Missing-Pieces.git";
@@ -506,6 +526,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B9C7F2EA26348B0D00447691 /* XCRemoteSwiftPackageReference "ArrayBuilder" */;
 			productName = ArrayBuilder;
+		};
+		B952C3CA2AD97A1800500055 /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B952C3C92AD97A1800500055 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

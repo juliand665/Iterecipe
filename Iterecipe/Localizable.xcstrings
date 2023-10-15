@@ -1,0 +1,147 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%lld" : {
+
+    },
+    "%lld Notes" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Note"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "%lld Notes"
+                }
+              },
+              "zero" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "No Notes"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Add Image" : {
+
+    },
+    "Add Ingredient" : {
+
+    },
+    "Add New Revision" : {
+
+    },
+    "Add Note" : {
+
+    },
+    "Add Step" : {
+
+    },
+    "An Error Occurred!" : {
+
+    },
+    "Current Revision" : {
+
+    },
+    "Delete Revision" : {
+
+    },
+    "Done" : {
+
+    },
+    "Edit" : {
+
+    },
+    "Identical to previous revision." : {
+
+    },
+    "Image could not be set!" : {
+
+    },
+    "Ingredient" : {
+
+    },
+    "Ingredients" : {
+
+    },
+    "Initial Version" : {
+
+    },
+    "Item" : {
+
+    },
+    "Next Revision" : {
+
+    },
+    "Note" : {
+
+    },
+    "Notes" : {
+
+    },
+    "OK" : {
+
+    },
+    "Previous Revision" : {
+
+    },
+    "Process" : {
+
+    },
+    "Recipe Image" : {
+
+    },
+    "Recipe Revisions" : {
+
+    },
+    "Recipe Title" : {
+
+    },
+    "Redo" : {
+
+    },
+    "Remove Image" : {
+
+    },
+    "Replace Image" : {
+
+    },
+    "Revision %lld" : {
+
+    },
+    "Revision %lld/%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Revision %1$lld/%2$lld"
+          }
+        }
+      }
+    },
+    "Source" : {
+
+    },
+    "Step Description" : {
+
+    },
+    "Steps" : {
+
+    },
+    "Undo" : {
+
+    }
+  },
+  "version" : "1.0"
+}

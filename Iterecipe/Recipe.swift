@@ -92,12 +92,14 @@ extension Recipe {
 			
 			initial
 			initial <- {
+				$0.id = .init()
 				$0.dateCreated = .now
 				
 				$0.ingredients.remove(at: 3)
-				$0.ingredients.insert("250 mL milk", at: 4)
+				$0.ingredients.insert("250 mL milk", at: 2)
 				$0.ingredients[3].text = "3 eggs"
-				$0.ingredients[5].text += "1 stick butter, melted, browned to a dark amber color"
+				$0.ingredients[5].text = "1 stick butter, melted, browned to a dark amber color"
+				$0.ingredients.move(fromOffsets: [3, 4], toOffset: 0)
 				
 				$0.steps.insert("Actually i forgot something important!", at: 2)
 				$0.steps[5].text += " This is the best part."

@@ -129,19 +129,33 @@ struct ContentView: View {
 			}
 			.disabled(revisionIndexFromEnd >= recipe.revisions.count - 1)
 			
+			NavigationLink {
+				RevisionListView(recipe: $recipe, revisionIndexFromEnd: $revisionIndexFromEnd)
+					.environment(undoManager)
+			} label: {
+				HStack {
+					Group {
+						if revisionIndexFromEnd == 0 {
+							Text("Current Revision")
+						} else {
+							Text("Revision \(revisionIndex + 1)/\(recipe.revisions.count)")
+						}
+					}
+					.tint(.primary)
+					
+					Image(systemName: "chevron.down")
+						.imageScale(.small)
+				}
+			}
+			.frame(maxWidth: .infinity)
+			
 			if revisionIndexFromEnd == 0 {
-				Text("Current Revision")
-					.frame(maxWidth: .infinity)
-				
 				CircleButton("Add New Revision", systemImage: "plus") {
 					withAnimation {
 						recipe.addRevision()
 					}
 				}
 			} else {
-				Text("Revision \(revisionIndex + 1)/\(recipe.revisions.count)")
-					.frame(maxWidth: .infinity)
-				
 				CircleButton("Next Revision", systemImage: "chevron.right") {
 					withAnimation {
 						revisionIndexFromEnd -= 1
@@ -202,6 +216,8 @@ struct ContentViewPreview: View {
 	@State var recipe: Recipe
 	
 	var body: some View {
-		ContentView(recipe: $recipe)
+		NavigationStack {
+			ContentView(recipe: $recipe)
+		}
 	}
 }
