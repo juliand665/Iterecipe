@@ -39,17 +39,10 @@ struct TextItemEditor: View {
 	
 	func itemRow(@Binding item: TextItem) -> some View {
 		func advance() {
-			let nextItem = items
-				.drop { $0.id != item.id }
-				.dropFirst()
-				.first?.id
-			if let nextItem {
-				focusedItem = nextItem
-			} else {
-				let newItem = TextItem()
-				items.append(newItem)
-				focusedItem = newItem.id
-			}
+			let currentIndex = items.firstIndex { $0.id == item.id }!
+			let newItem = TextItem()
+			items.insert(newItem, at: currentIndex + 1)
+			focusedItem = newItem.id
 		}
 		
 		return TextField(textPlaceholder, text: $item.text, axis: .vertical)
