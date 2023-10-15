@@ -3,6 +3,7 @@ import SwiftUI
 struct RevisionView: View {
 	@Binding var revision: Recipe.Revision
 	@Environment(\.hasRegularWidth) var hasRegularWidth
+	@Environment(ObservableUndoManager.self) var undoManager
 	
 	var body: some View {
 		if hasRegularWidth {
@@ -33,6 +34,7 @@ struct RevisionView: View {
 					addButtonLabel: "Add Ingredient"
 				)
 				.navigationTitle("Ingredients")
+				.environment(undoManager)
 			}
 		} content: {
 			ForEach(revision.ingredients) { ingredient in
@@ -53,6 +55,7 @@ struct RevisionView: View {
 					addButtonLabel: "Add Step"
 				)
 				.navigationTitle("Steps")
+				.environment(undoManager)
 			}
 		} content: {
 			ForEach(revision.steps) { step in

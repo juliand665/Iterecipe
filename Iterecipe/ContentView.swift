@@ -9,6 +9,9 @@ struct ContentView: View {
 	@State var selectedImage: PhotosPickerItem?
 	@State var imageError = ErrorContainer()
 	
+	@Environment(\.undoManager) private var nsUndoManager
+	@State var undoManager = ObservableUndoManager()
+	
 	var revisionIndex: Int {
 		recipe.revisions.count - 1 - revisionIndexFromEnd
 	}
@@ -65,6 +68,10 @@ struct ContentView: View {
 			HStack {
 				UndoRedoButtons()
 			}
+		}
+		.environment(undoManager)
+		.onChange(of: nsUndoManager, initial: true) {
+			undoManager.observe(nsUndoManager!)
 		}
 	}
 	
