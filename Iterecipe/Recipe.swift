@@ -10,7 +10,8 @@ struct Recipe: Codable {
 	var revisions: [Revision] = [.init()]
 	
 	mutating func addRevision() {
-		revisions.append(revisions.last! <- { $0.notes = [] })
+		let current = revisions.last!
+		revisions.append(.init(ingredients: current.ingredients, steps: current.steps))
 	}
 	
 	struct Revision: Codable, Identifiable {
