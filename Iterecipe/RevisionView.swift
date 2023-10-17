@@ -4,6 +4,7 @@ struct RevisionView: View {
 	@Binding var revision: Recipe.Revision
 	@Environment(\.hasRegularWidth) var hasRegularWidth
 	@Environment(ObservableUndoManager.self) var undoManager
+	@State var checklist = Checklist()
 	
 	var body: some View {
 		if hasRegularWidth {
@@ -37,14 +38,9 @@ struct RevisionView: View {
 				.environment(undoManager)
 			}
 		} content: {
-			ForEach(revision.ingredients) { ingredient in
-				Text(ingredient.text)
-					.frame(maxWidth: .infinity, alignment: .leading)
-			}
+			ChecklistView(items: revision.ingredients, completedItems: $checklist.completedIngredients)
 		}
 	}
-	
-	@State private var isEditingProcess = false
 	
 	private func process() -> some View {
 		RecipeSection("Process", systemImage: "list.number") {
@@ -58,10 +54,7 @@ struct RevisionView: View {
 				.environment(undoManager)
 			}
 		} content: {
-			ForEach(revision.steps) { step in
-				Text(step.text)
-					.frame(maxWidth: .infinity, alignment: .leading)
-			}
+			ChecklistView(items: revision.steps, completedItems: $checklist.completedSteps)
 		}
 	}
 	
@@ -98,6 +91,42 @@ struct RevisionView: View {
 					
 					TextField("Note", text: $note.contents, axis: .vertical)
 						.frame(maxWidth: .infinity, alignment: .leading)
+				}
+			}
+		}
+	}
+}
+
+struct Checklist {
+	var completedIngredients: Set<TextItem.ID> = []
+	var completedSteps: Set<TextItem.ID> = []
+}
+
+struct ChecklistView: View {
+	var items: [TextItem]
+	@Binding var completedItems: Set<TextItem.ID>
+	
+	var body: some View {
+		VStack(spacing: 12) {
+			ForEach(items) { item in
+				Button {
+					completedItems.formSymmetricDifference([item.id])
+				} label: {
+					HStack {
+						let isComplete = completedItems.contains(item.id)
+						Image(systemName: isComplete ? "checkmark.circle.fill" : "circle")
+							.imageScale(.large)
+						
+						Text(item.text)
+							.frame(maxWidth: .infinity, alignment: .leading)
+							.tint(.primary)
+							.opacity(isComplete ? 0.5 : 1)
+							.multilineTextAlignment(.leading)
+					}
+				}
+				
+				if item.id != items.last?.id {
+					Divider()
 				}
 			}
 		}
