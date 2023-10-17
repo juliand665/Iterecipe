@@ -33,7 +33,6 @@ final class ObservableUndoManager {
 	private var observation: AnyCancellable?
 	
 	func observe(_ manager: UndoManager) {
-		print("observing", manager)
 		self.manager = manager
 		
 		let nc = NotificationCenter.default
@@ -41,7 +40,6 @@ final class ObservableUndoManager {
 			with: nc.publisher(for: .NSUndoManagerDidUndoChange, object: manager),
 			nc.publisher(for: .NSUndoManagerDidRedoChange, object: manager)
 		).sink { [weak self] _ in
-			print("undo manager update:", manager.canUndo, manager.canRedo)
 			self?.canUndo = manager.canUndo
 			self?.canRedo = manager.canRedo
 		}

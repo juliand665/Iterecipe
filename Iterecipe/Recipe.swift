@@ -71,7 +71,7 @@ extension Recipe {
 		image: nil,
 		revisions: .init {
 			let initial = Revision(
-				dateCreated: .init(timeIntervalSinceNow: -10_000),
+				dateCreated: .init(timeIntervalSinceNow: -100_000),
 				ingredients: [
 					"42 g sugar",
 					"0.5 tsp salt",
@@ -91,10 +91,10 @@ extension Recipe {
 			)
 			
 			initial
-			initial <- {
-				$0.id = .init()
-				$0.dateCreated = .now
-				
+			
+			Revision(dateCreated: .init(timeIntervalSinceNow: -20_000), ingredients: initial.ingredients, steps: initial.steps)
+			
+			Revision(ingredients: initial.ingredients, steps: initial.steps) <- {
 				$0.ingredients.remove(at: 3)
 				$0.ingredients.insert("250 mL milk", at: 2)
 				$0.ingredients[3].text = "3 eggs"
