@@ -48,6 +48,9 @@
     "Add Step" : {
 
     },
+    "added" : {
+
+    },
     "An Error Occurred!" : {
 
     },
@@ -72,6 +75,9 @@
     "Ingredient" : {
 
     },
+    "Ingredient Changes" : {
+
+    },
     "Ingredients" : {
 
     },
@@ -79,6 +85,9 @@
 
     },
     "Item" : {
+
+    },
+    "moved" : {
 
     },
     "Next Revision" : {
@@ -99,6 +108,9 @@
     "Process" : {
 
     },
+    "Process Changes" : {
+
+    },
     "Recipe Image" : {
 
     },
@@ -112,6 +124,9 @@
 
     },
     "Remove Image" : {
+
+    },
+    "removed" : {
 
     },
     "Replace Image" : {

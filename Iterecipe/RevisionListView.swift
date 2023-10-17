@@ -40,14 +40,17 @@ struct RevisionListView: View {
 					}
 					
 					if index > 0 {
-						VStack(alignment: .leading, spacing: 16) {
-							let previous = recipe.revisions[index - 1]
-							let changes = textItemDiff(current: revision.ingredients, previous: previous.ingredients)
-							if changes.isEmpty {
-								Text("Identical to previous revision.")
-									.foregroundStyle(.secondary)
-							} else {
-								ForEach(changes) { ChangeView(change: $0) }
+						let previous = recipe.revisions[index - 1]
+						let ingredientDiff = textItemDiff(current: revision.ingredients, previous: previous.ingredients)
+						let processDiff = textItemDiff(current: revision.steps, previous: previous.steps)
+						
+						if ingredientDiff.isEmpty, processDiff.isEmpty {
+							Text("Identical to previous revision.")
+								.foregroundStyle(.secondary)
+						} else {
+							VStack {
+								diffView("Ingredient Changes", for: ingredientDiff)
+								diffView("Process Changes", for: processDiff)
 							}
 						}
 					}
@@ -65,6 +68,16 @@ struct RevisionListView: View {
 					Text(revision.dateCreated, format: .dateTime)
 				}
 			}
+			
+			Section {
+				Button {
+					withAnimation {
+						recipe.addRevision()
+					}
+				} label: {
+					Label("Add New Revision", systemImage: "plus")
+				}
+			}
 		}
 		.sensoryFeedback(.selection, trigger: revisionIndexFromEnd)
 		.navigationTitle("Recipe Revisions")
@@ -73,6 +86,22 @@ struct RevisionListView: View {
 			HStack {
 				UndoRedoButtons()
 			}
+		}
+	}
+	
+	@ViewBuilder
+	func diffView(_ heading: LocalizedStringKey, for changes: [Change]) -> some View {
+		if !changes.isEmpty {
+			GroupBox {
+				VStack(spacing: 16) {
+					Text(heading)
+						.font(.subheadline.weight(.medium))
+					ForEach(changes) { 
+						ChangeView(change: $0)
+					}
+				}
+			}
+			.alignmentGuide(.listRowSeparatorLeading) { $0[.leading] }
 		}
 	}
 	
@@ -161,7 +190,11 @@ struct RevisionListView: View {
 						Text(item.text)
 							.foregroundStyle(.secondary)
 						divider
+						Text("removed")
+							.foregroundStyle(.accent)
 					case .insertion(let item):
+						Text("added")
+							.foregroundStyle(.accent)
 						divider
 						Text(item.text)
 					case .edit(let old, let new, _):
@@ -174,6 +207,11 @@ struct RevisionListView: View {
 							HStack {
 								Text(new.text)
 								divider
+									.frame(minWidth: 10)
+									.layoutPriority(-1)
+								Text("moved")
+									.foregroundStyle(.accent)
+									.layoutPriority(1)
 							}
 						}
 					}
@@ -195,6 +233,7 @@ struct RevisionListView: View {
 				.foregroundStyle(.accent)
 				.frame(minWidth: symbolSize)
 			}
+			.font(.footnote)
 		}
 	}
 }
