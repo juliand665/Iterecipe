@@ -75,7 +75,7 @@ extension Recipe {
 				ingredients: [
 					"42 g sugar",
 					"0.5 tsp salt",
-					"freshly-ground black pepper",
+					"just some black pepper",
 					"freshly-ground black pepper again but this time it's much longer",
 					"2 eggs",
 					"1 stick butter, melted",
@@ -97,7 +97,7 @@ extension Recipe {
 			Revision(ingredients: initial.ingredients, steps: initial.steps) <- {
 				$0.ingredients.remove(at: 3)
 				$0.ingredients.insert("250 mL milk", at: 2)
-				$0.ingredients[3].text = "3 eggs"
+				$0.ingredients[3].text = "freshly-ground black pepper"
 				$0.ingredients[5].text = "1 stick butter, melted, browned to a dark amber color"
 				$0.ingredients.move(fromOffsets: [3, 4], toOffset: 0)
 				
