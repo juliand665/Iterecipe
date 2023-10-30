@@ -81,7 +81,9 @@ struct RevisionListView: View {
 		}
 		.sensoryFeedback(.selection, trigger: revisionIndexFromEnd)
 		.navigationTitle("Recipe Revisions")
+		#if os(iOS)
 		.navigationBarTitleDisplayMode(.inline)
+		#endif
 		.toolbar {
 			HStack {
 				UndoRedoButtons()

@@ -33,7 +33,7 @@ extension Color {
 	static let textBackground = Self(.secondarySystemGroupedBackground)
 #endif
 #if os(macOS)
-	static let canvasBackground = Self(.windowBackground)
+	static let canvasBackground = Self(.windowBackgroundColor)
 #else
 	static let canvasBackground = Self(.systemGroupedBackground)
 #endif

@@ -5,7 +5,9 @@ struct TextItemEditor: View {
 	var textPlaceholder: LocalizedStringKey
 	var addButtonLabel: LocalizedStringKey
 	
+	#if os(iOS)
 	@Environment(\.editMode) private var editMode
+	#endif
 	@FocusState private var focusedItem: TextItem.ID?
 	
 	var body: some View {
@@ -21,10 +23,12 @@ struct TextItemEditor: View {
 			}
 		}
 		.scrollDismissesKeyboard(.interactively)
+#if os(iOS)
 		.navigationBarTitleDisplayMode(.inline)
 		.toolbar {
 			EditButton()
 		}
+#endif
 		.toolbar {
 			HStack(spacing: 0) {
 				UndoRedoButtons()
@@ -47,7 +51,9 @@ struct TextItemEditor: View {
 		
 		return TextField(textPlaceholder, text: $item.text, axis: .vertical)
 			.focused($focusedItem, equals: item.id)
+#if os(iOS)
 			.disabled(editMode?.wrappedValue.isEditing == true)
+#endif
 			.submitLabel(.next)
 			.onSubmit(advance)
 			.onChange(of: item.text) {
