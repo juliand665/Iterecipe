@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B952C3B22AD6411F00500055 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91B0D2126339B98007CB84A /* Recipe.swift */; };
-		B952C3B52AD6417700500055 /* HandyOperators in Frameworks */ = {isa = PBXBuildFile; productRef = B952C3B42AD6417700500055 /* HandyOperators */; };
-		B952C3B72AD6424100500055 /* AlignedLabels in Frameworks */ = {isa = PBXBuildFile; productRef = B952C3B62AD6424100500055 /* AlignedLabels */; };
-		B952C3B92AD6424100500055 /* ArrayBuilder in Frameworks */ = {isa = PBXBuildFile; productRef = B952C3B82AD6424100500055 /* ArrayBuilder */; };
 		B952C3BC2AD78A9000500055 /* SwiftUI+CrossPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = B952C3BB2AD78A9000500055 /* SwiftUI+CrossPlatform.swift */; };
 		B952C3BE2AD78C2F00500055 /* RecipeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B952C3BD2AD78C2F00500055 /* RecipeImage.swift */; };
 		B952C3C02AD8242100500055 /* RevisionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B952C3BF2AD8242100500055 /* RevisionView.swift */; };
@@ -25,6 +22,12 @@
 		B966AA622AD41F2F003AD8B4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B966AA612AD41F2F003AD8B4 /* ContentView.swift */; };
 		B966AA642AD41F32003AD8B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B966AA632AD41F32003AD8B4 /* Assets.xcassets */; };
 		B966AA692AD41F32003AD8B4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B966AA682AD41F32003AD8B4 /* Preview Assets.xcassets */; };
+		B98C76662ADF3C0D00D2944A /* ChecklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98C76652ADF3C0D00D2944A /* ChecklistView.swift */; };
+		B9DA2B4F2AE801CA0014AB18 /* ProcessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DA2B4E2AE801CA0014AB18 /* ProcessManager.swift */; };
+		B9DA2B522AE8794E0014AB18 /* UserDefault in Frameworks */ = {isa = PBXBuildFile; productRef = B9DA2B512AE8794E0014AB18 /* UserDefault */; };
+		B9DA2B562AE87B2C0014AB18 /* HandyOperators in Frameworks */ = {isa = PBXBuildFile; productRef = B9DA2B552AE87B2C0014AB18 /* HandyOperators */; };
+		B9DA2B582AE87B480014AB18 /* ArrayBuilder in Frameworks */ = {isa = PBXBuildFile; productRef = B9DA2B572AE87B480014AB18 /* ArrayBuilder */; };
+		B9E57DE32AEECD77004B9422 /* Observation+Tracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E57DE22AEECD76004B9422 /* Observation+Tracking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +48,9 @@
 		B966AA652AD41F32003AD8B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B966AA662AD41F32003AD8B4 /* Iterecipe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Iterecipe.entitlements; sourceTree = "<group>"; };
 		B966AA682AD41F32003AD8B4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B98C76652ADF3C0D00D2944A /* ChecklistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistView.swift; sourceTree = "<group>"; };
+		B9DA2B4E2AE801CA0014AB18 /* ProcessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessManager.swift; sourceTree = "<group>"; };
+		B9E57DE22AEECD76004B9422 /* Observation+Tracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observation+Tracking.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,10 +58,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9DA2B562AE87B2C0014AB18 /* HandyOperators in Frameworks */,
 				B952C3CB2AD97A1800500055 /* Algorithms in Frameworks */,
-				B952C3B72AD6424100500055 /* AlignedLabels in Frameworks */,
-				B952C3B52AD6417700500055 /* HandyOperators in Frameworks */,
-				B952C3B92AD6424100500055 /* ArrayBuilder in Frameworks */,
+				B9DA2B582AE87B480014AB18 /* ArrayBuilder in Frameworks */,
+				B9DA2B522AE8794E0014AB18 /* UserDefault in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +95,7 @@
 		B952C3BA2AD78A7F00500055 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				B9E57DE22AEECD76004B9422 /* Observation+Tracking.swift */,
 				B952C3BB2AD78A9000500055 /* SwiftUI+CrossPlatform.swift */,
 			);
 			path = Helpers;
@@ -101,12 +108,14 @@
 				B966AA612AD41F2F003AD8B4 /* ContentView.swift */,
 				B952C3C72AD9758000500055 /* RevisionListView.swift */,
 				B952C3BF2AD8242100500055 /* RevisionView.swift */,
+				B98C76652ADF3C0D00D2944A /* ChecklistView.swift */,
 				B952C3C32AD8314900500055 /* TextItemEditor.swift */,
 				B952C3C12AD82B7A00500055 /* UndoRedoButtons.swift */,
 				B966AA5F2AD41F2F003AD8B4 /* IterecipeDocument.swift */,
 				B91B0D2126339B98007CB84A /* Recipe.swift */,
 				B952C3BD2AD78C2F00500055 /* RecipeImage.swift */,
 				B952C3C52AD8FBDF00500055 /* ErrorContainer.swift */,
+				B9DA2B4E2AE801CA0014AB18 /* ProcessManager.swift */,
 				B952C3BA2AD78A7F00500055 /* Helpers */,
 				B966AA632AD41F32003AD8B4 /* Assets.xcassets */,
 				B952C3CC2ADA23B900500055 /* Localizable.xcstrings */,
@@ -142,10 +151,10 @@
 			);
 			name = Iterecipe;
 			packageProductDependencies = (
-				B952C3B42AD6417700500055 /* HandyOperators */,
-				B952C3B62AD6424100500055 /* AlignedLabels */,
-				B952C3B82AD6424100500055 /* ArrayBuilder */,
 				B952C3CA2AD97A1800500055 /* Algorithms */,
+				B9DA2B512AE8794E0014AB18 /* UserDefault */,
+				B9DA2B552AE87B2C0014AB18 /* HandyOperators */,
+				B9DA2B572AE87B480014AB18 /* ArrayBuilder */,
 			);
 			productName = Iterecipe;
 			productReference = B966AA5B2AD41F2F003AD8B4 /* Iterecipe.app */;
@@ -176,12 +185,10 @@
 			);
 			mainGroup = B91B0CF5263399FD007CB84A;
 			packageReferences = (
-				B91B0D2626339D55007CB84A /* XCRemoteSwiftPackageReference "HandyOperators" */,
-				B9C0F6462633B4AB00DE92A0 /* XCRemoteSwiftPackageReference "AlignedLabels" */,
-				B9737F642633B8C100F101F7 /* XCRemoteSwiftPackageReference "SwifUI-Missing-Pieces" */,
-				B9737F6F2634580400F101F7 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
-				B9C7F2EA26348B0D00447691 /* XCRemoteSwiftPackageReference "ArrayBuilder" */,
 				B952C3C92AD97A1800500055 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+				B9DA2B502AE878F90014AB18 /* XCRemoteSwiftPackageReference "UserDefault" */,
+				B9DA2B532AE87B0F0014AB18 /* XCRemoteSwiftPackageReference "ArrayBuilder" */,
+				B9DA2B542AE87B2B0014AB18 /* XCRemoteSwiftPackageReference "HandyOperators" */,
 			);
 			productRefGroup = B91B0D04263399FF007CB84A /* Products */;
 			projectDirPath = "";
@@ -212,7 +219,10 @@
 			files = (
 				B952C3C02AD8242100500055 /* RevisionView.swift in Sources */,
 				B966AA5E2AD41F2F003AD8B4 /* IterecipeApp.swift in Sources */,
+				B9DA2B4F2AE801CA0014AB18 /* ProcessManager.swift in Sources */,
+				B9E57DE32AEECD77004B9422 /* Observation+Tracking.swift in Sources */,
 				B952C3BE2AD78C2F00500055 /* RecipeImage.swift in Sources */,
+				B98C76662ADF3C0D00D2944A /* ChecklistView.swift in Sources */,
 				B952C3C42AD8314900500055 /* TextItemEditor.swift in Sources */,
 				B952C3C82AD9758000500055 /* RevisionListView.swift in Sources */,
 				B966AA602AD41F2F003AD8B4 /* IterecipeDocument.swift in Sources */,
@@ -285,6 +295,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
 			};
 			name = Debug;
 		};
@@ -339,6 +350,7 @@
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
 			};
 			name = Release;
 		};
@@ -461,14 +473,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		B91B0D2626339D55007CB84A /* XCRemoteSwiftPackageReference "HandyOperators" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:juliand665/HandyOperators.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		B952C3C92AD97A1800500055 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-algorithms.git";
@@ -477,60 +481,52 @@
 				minimumVersion = 1.1.0;
 			};
 		};
-		B9737F642633B8C100F101F7 /* XCRemoteSwiftPackageReference "SwifUI-Missing-Pieces" */ = {
+		B9DA2B502AE878F90014AB18 /* XCRemoteSwiftPackageReference "UserDefault" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:juliand665/SwifUI-Missing-Pieces.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-		B9737F6F2634580400F101F7 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:siteline/SwiftUI-Introspect.git";
+			repositoryURL = "https://github.com/juliand665/UserDefault";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.3;
+				minimumVersion = 1.0.2;
 			};
 		};
-		B9C0F6462633B4AB00DE92A0 /* XCRemoteSwiftPackageReference "AlignedLabels" */ = {
+		B9DA2B532AE87B0F0014AB18 /* XCRemoteSwiftPackageReference "ArrayBuilder" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:juliand665/AlignedLabels.git";
+			repositoryURL = "https://github.com/juliand665/ArrayBuilder";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
 			};
 		};
-		B9C7F2EA26348B0D00447691 /* XCRemoteSwiftPackageReference "ArrayBuilder" */ = {
+		B9DA2B542AE87B2B0014AB18 /* XCRemoteSwiftPackageReference "HandyOperators" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:juliand665/ArrayBuilder.git";
+			repositoryURL = "https://github.com/juliand665/HandyOperators";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B952C3B42AD6417700500055 /* HandyOperators */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B91B0D2626339D55007CB84A /* XCRemoteSwiftPackageReference "HandyOperators" */;
-			productName = HandyOperators;
-		};
-		B952C3B62AD6424100500055 /* AlignedLabels */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B9C0F6462633B4AB00DE92A0 /* XCRemoteSwiftPackageReference "AlignedLabels" */;
-			productName = AlignedLabels;
-		};
-		B952C3B82AD6424100500055 /* ArrayBuilder */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B9C7F2EA26348B0D00447691 /* XCRemoteSwiftPackageReference "ArrayBuilder" */;
-			productName = ArrayBuilder;
-		};
 		B952C3CA2AD97A1800500055 /* Algorithms */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B952C3C92AD97A1800500055 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
 			productName = Algorithms;
+		};
+		B9DA2B512AE8794E0014AB18 /* UserDefault */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9DA2B502AE878F90014AB18 /* XCRemoteSwiftPackageReference "UserDefault" */;
+			productName = UserDefault;
+		};
+		B9DA2B552AE87B2C0014AB18 /* HandyOperators */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9DA2B542AE87B2B0014AB18 /* XCRemoteSwiftPackageReference "HandyOperators" */;
+			productName = HandyOperators;
+		};
+		B9DA2B572AE87B480014AB18 /* ArrayBuilder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9DA2B532AE87B0F0014AB18 /* XCRemoteSwiftPackageReference "ArrayBuilder" */;
+			productName = ArrayBuilder;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

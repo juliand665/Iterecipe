@@ -4,6 +4,8 @@ import PhotosUI
 @MainActor
 struct ContentView: View {
 	@Binding var recipe: Recipe
+	var recipeURL: URL?
+	
 	@State var revisionIndexFromEnd = 0
 	@State var isPickingImage = false
 	@State var selectedImage: PhotosPickerItem?
@@ -49,7 +51,7 @@ struct ContentView: View {
 					Divider()
 				}
 				
-				RevisionView(revision: $recipe.revisions[revisionIndex])
+				RevisionView(revision: $recipe.revisions[revisionIndex], recipeURL: recipeURL)
 			}
 			.padding()
 			.textFieldStyle(.plain)

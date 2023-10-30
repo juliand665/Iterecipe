@@ -1,30 +1,21 @@
 {
   "pins" : [
     {
-      "identity" : "alignedlabels",
-      "kind" : "remoteSourceControl",
-      "location" : "git@github.com:juliand665/AlignedLabels.git",
-      "state" : {
-        "branch" : "main",
-        "revision" : "938496e5f15f0197dcc9cd03d71d065a79723ffb"
-      }
-    },
-    {
       "identity" : "arraybuilder",
       "kind" : "remoteSourceControl",
-      "location" : "git@github.com:juliand665/ArrayBuilder.git",
+      "location" : "https://github.com/juliand665/ArrayBuilder",
       "state" : {
-        "branch" : "main",
-        "revision" : "fc06af7372b00661f0f34578551c8abe96015403"
+        "revision" : "f713ffd1432c5fb7cbf47a84bd634b18256957b6",
+        "version" : "1.1.0"
       }
     },
     {
       "identity" : "handyoperators",
       "kind" : "remoteSourceControl",
-      "location" : "git@github.com:juliand665/HandyOperators.git",
+      "location" : "https://github.com/juliand665/HandyOperators.git",
       "state" : {
-        "revision" : "483aa96950ad3078d092b2ba8d9dda6ea6576244",
-        "version" : "1.0.0"
+        "revision" : "39f39ae74471112d54152227bb70053b59ea796f",
+        "version" : "2.1.0"
       }
     },
     {
@@ -46,21 +37,12 @@
       }
     },
     {
-      "identity" : "swiftui-introspect",
+      "identity" : "userdefault",
       "kind" : "remoteSourceControl",
-      "location" : "git@github.com:siteline/SwiftUI-Introspect.git",
+      "location" : "https://github.com/juliand665/UserDefault",
       "state" : {
-        "revision" : "2e09be8af614401bc9f87d40093ec19ce56ccaf2",
-        "version" : "0.1.3"
-      }
-    },
-    {
-      "identity" : "swifui-missing-pieces",
-      "kind" : "remoteSourceControl",
-      "location" : "git@github.com:juliand665/SwifUI-Missing-Pieces.git",
-      "state" : {
-        "branch" : "main",
-        "revision" : "536fc4c47a3df531619d24010eec67bf6bb19869"
+        "revision" : "01ecd19faf558571571e6a5ad72d5feae43b3cbf",
+        "version" : "1.3.1"
       }
     }
   ],

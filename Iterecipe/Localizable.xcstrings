@@ -45,6 +45,9 @@
     "Add Note" : {
 
     },
+    "Add Note?" : {
+
+    },
     "Add Step" : {
 
     },
@@ -66,10 +69,16 @@
     "Edit" : {
 
     },
+    "Finish Cooking" : {
+
+    },
     "Identical to previous revision." : {
 
     },
     "Image could not be set!" : {
+
+    },
+    "in **^[%lld hours](inflect: true)**" : {
 
     },
     "Ingredient" : {
@@ -84,7 +93,13 @@
     "Initial Version" : {
 
     },
+    "It can be very helpful to reflect on how your recipe turned out in order to drive future improvements!" : {
+
+    },
     "Item" : {
+
+    },
+    "Iterecipe can remind you later, after your meal, to add a note reflecting on how this recipe came out and perhaps what changes to make next time." : {
 
     },
     "moved" : {
@@ -97,6 +112,9 @@
 
     },
     "Notes" : {
+
+    },
+    "Nothing yet!" : {
 
     },
     "OK" : {
@@ -114,6 +132,9 @@
     "Recipe Image" : {
 
     },
+    "Recipe must be saved as a file in order to track progress." : {
+
+    },
     "Recipe Revisions" : {
 
     },
@@ -121,6 +142,9 @@
 
     },
     "Redo" : {
+
+    },
+    "Remind Me" : {
 
     },
     "Remove Image" : {
@@ -146,6 +170,15 @@
       }
     },
     "Source" : {
+
+    },
+    "Start Cooking" : {
+
+    },
+    "Start cooking this recipe to check off ingredients & steps as you go!" : {
+
+    },
+    "Start Cooking?" : {
 
     },
     "Step Description" : {
