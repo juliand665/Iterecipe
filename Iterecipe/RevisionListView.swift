@@ -94,16 +94,18 @@ struct RevisionListView: View {
 	@ViewBuilder
 	func diffView(_ heading: LocalizedStringKey, for changes: [Change]) -> some View {
 		if !changes.isEmpty {
-			GroupBox {
+			VStack(spacing: 12) {
+				Text(heading)
+					.font(.subheadline.weight(.medium))
+				Divider()
 				VStack(spacing: 16) {
-					Text(heading)
-						.font(.subheadline.weight(.medium))
-					ForEach(changes) { 
+					ForEach(changes) {
 						ChangeView(change: $0)
 					}
 				}
 			}
 			.alignmentGuide(.listRowSeparatorLeading) { $0[.leading] }
+			.padding(.vertical)
 		}
 	}
 	
@@ -186,7 +188,7 @@ struct RevisionListView: View {
 				.alignmentGuide(.change) { $0.height / 2 }
 			
 			HStack(alignment: .change, spacing: 0) {
-				VStack(alignment: .leading, spacing: 4) {
+				let description = VStack(alignment: .leading, spacing: 4) {
 					switch change {
 					case .removal(let item):
 						Text(item.text)
@@ -218,7 +220,22 @@ struct RevisionListView: View {
 						}
 					}
 				}
-				.lineLimit(1)
+					.lineLimit(1)
+				
+				// size based on the non-scrollable version
+				description
+					.hidden()
+					.overlay {
+						// need geometry reader in order to set min width appropriately
+						GeometryReader { geometry in
+							ScrollView(.horizontal) {
+								description
+									.frame(minWidth: geometry.size.width)
+							}
+							.scrollBounceBehavior(.basedOnSize, axes: .horizontal)
+							.scrollIndicators(.hidden)
+						}
+					}
 				
 				Spacer()
 				
