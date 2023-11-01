@@ -2,8 +2,9 @@ import SwiftUI
 import UniformTypeIdentifiers
 import HandyOperators
 
-struct IterecipeDocument: Codable {
-	var recipe = Recipe()
+struct IterecipeDocument {
+	var recipe: Recipe?
+	var loadingError: (any Error)?
 }
 
 extension IterecipeDocument: FileDocument {
@@ -13,21 +14,29 @@ extension IterecipeDocument: FileDocument {
 	private static let encoder = PropertyListEncoder()
 	
 	init(configuration: ReadConfiguration) throws {
-		let data = try configuration.file.regularFileContents
-		??? CocoaError(.fileReadCorruptFile)
-		
-		let versionInfo = try Self.decoder.decode(Metadata.self, from: data)
-		switch versionInfo.version {
-		case 0:
-			recipe = try Self.decoder.decode(Contents.self, from: data).recipe
-		case let version:
-			throw ReadError.unsupportedVersion(version)
+		do {
+			let data = try configuration.file.regularFileContents
+			??? CocoaError(.fileReadCorruptFile)
+			
+			let versionInfo = try Self.decoder.decode(Metadata.self, from: data)
+			switch versionInfo.version {
+			case 0:
+				recipe = try Self.decoder.decode(Contents.self, from: data).recipe
+			case let version:
+				throw ReadError.unsupportedVersion(version)
+			}
+		} catch {
+			print("Error loading document:", error)
+			dump(error)
+			// can't throw this error because then it just silently does nothing
+			loadingError = error
 		}
 	}
 	
 	func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
-		.init(regularFileWithContents: try Self.encoder.encode(
-			ContentsWithMetadata(version: 0, recipe: recipe)
+		if let loadingError { throw WriteError.loadFailed(loadingError) }
+		return .init(regularFileWithContents: try Self.encoder.encode(
+			ContentsWithMetadata(version: 0, recipe: recipe!)
 		)) <- {
 			$0.preferredFilename = "Recipe.iterecipe"
 		}
@@ -48,6 +57,10 @@ extension IterecipeDocument: FileDocument {
 	
 	enum ReadError: Error {
 		case unsupportedVersion(Int)
+	}
+	
+	enum WriteError: Error {
+		case loadFailed(Error)
 	}
 }
 

@@ -60,6 +60,9 @@
     "Cancel" : {
 
     },
+    "Could not load recipe!" : {
+
+    },
     "Could not schedule notification!" : {
 
     },
