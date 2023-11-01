@@ -57,6 +57,12 @@
     "An Error Occurred!" : {
 
     },
+    "Cancel" : {
+
+    },
+    "Could not schedule notification!" : {
+
+    },
     "Current Revision" : {
 
     },
@@ -93,7 +99,7 @@
     "Initial Version" : {
 
     },
-    "It can be very helpful to reflect on how your recipe turned out in order to drive future improvements!" : {
+    "It can be helpful to reflect on how your recipe turned out in order to drive future improvements!" : {
 
     },
     "Item" : {
@@ -132,9 +138,6 @@
     "Recipe Image" : {
 
     },
-    "Recipe must be saved as a file in order to track progress." : {
-
-    },
     "Recipe Revisions" : {
 
     },
@@ -145,6 +148,9 @@
 
     },
     "Remind Me" : {
+
+    },
+    "Reminder scheduled for %@" : {
 
     },
     "Remove Image" : {

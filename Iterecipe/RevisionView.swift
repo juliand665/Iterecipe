@@ -3,22 +3,18 @@ import SwiftUI
 @MainActor
 struct RevisionView: View {
 	@Binding var revision: Recipe.Revision
-	var recipeURL: URL?
+	@Bindable var prompts: CookingPrompts
 	
-	@State var isShowingStartPrompt = false
-	@State var isShowingNotePrompt = false
 	@FocusState var focusedNote: Note.ID?
 	
 	@Environment(\.hasRegularWidth) private var hasRegularWidth
 	@Environment(ObservableUndoManager.self) private var undoManager
 	@Environment(ProcessManager.self) private var processManager
-	
-	var currentProcess: Process? {
-		recipeURL.flatMap(processManager.process(forRecipeAt:))
-	}
+	@Environment(\.recipeURL) private var recipeURL
 	
 	private var checklistBinding: Binding<Checklist>? {
-		currentProcess.map(Bindable.init(_:))?.checklist
+		// this is so silly
+		processManager.process(forRecipeAt: recipeURL).map(Bindable.init(_:))?.checklist
 	}
 	
 	func addNote() {
@@ -29,8 +25,6 @@ struct RevisionView: View {
 	
 	var body: some View {
 		VStack(spacing: 32) {
-			checklistControls()
-			
 			if hasRegularWidth {
 				HStack(alignment: .top, spacing: 16) {
 					ingredients()
@@ -47,64 +41,14 @@ struct RevisionView: View {
 			
 			notes()
 		}
-		.confirmationDialog("Start Cooking?", isPresented: $isShowingStartPrompt, titleVisibility: .visible) {
-			startCookingButton()
-		} message: {
-			// iOS currently seems to only show the first text item, so let's make sure the hint shows up if it applies
-			saveToStartCookingHint()
-			Text("Start cooking this recipe to check off ingredients & steps as you go!")
-		}
-		.confirmationDialog("Add Note?", isPresented: $isShowingNotePrompt) {
+		.confirmationDialog("Add Note?", isPresented: $prompts.isShowingNotePrompt) {
 			Button("Add Note") {
 				withAnimation {
 					addNote()
 				}
 			}
 		} message: {
-			Text("It can be very helpful to reflect on how your recipe turned out in order to drive future improvements!")
-		}
-	}
-	
-	private func startCookingButton() -> some View {
-		Button {
-			withAnimation {
-				processManager.startProcess(forRecipeAt: recipeURL!)
-			}
-		} label: {
-			Label("Start Cooking", systemImage: "stove")
-		}
-		.disabled(recipeURL == nil)
-	}
-	
-	@ViewBuilder
-	private func saveToStartCookingHint() -> some View {
-		if recipeURL == nil {
-			Text("Recipe must be saved as a file in order to track progress.")
-		}
-	}
-	
-	private func checklistControls() -> some View {
-		VStack(spacing: .boxPadding) {
-			if let currentProcess {
-				Button {
-					withAnimation {
-						processManager.endProcess(forRecipeAt: currentProcess.recipeURL)
-						isShowingNotePrompt = true
-					}
-				} label: {
-					Label("Finish Cooking", systemImage: "checkmark")
-				}
-				.buttonStyle(.borderedProminent)
-				
-				ReminderView()
-			} else {
-				startCookingButton()
-					.buttonStyle(.borderedProminent)
-				
-				saveToStartCookingHint()
-					.font(.footnote)
-					.foregroundStyle(.secondary)
-			}
+			Text("It can be helpful to reflect on how your recipe turned out in order to drive future improvements!")
 		}
 	}
 	
@@ -123,7 +67,7 @@ struct RevisionView: View {
 			ChecklistView(
 				items: revision.ingredients, 
 				completedItems: checklistBinding?.completedIngredients,
-				showStartPrompt: { isShowingStartPrompt = true }
+				showStartPrompt: { prompts.isShowingStartPrompt = true }
 			)
 		}
 	}
@@ -143,7 +87,7 @@ struct RevisionView: View {
 			ChecklistView(
 				items: revision.steps,
 				completedItems: checklistBinding?.completedSteps,
-				showStartPrompt: { isShowingStartPrompt = true }
+				showStartPrompt: { prompts.isShowingStartPrompt = true }
 			)
 		}
 	}
@@ -184,69 +128,6 @@ struct RevisionView: View {
 						.frame(maxWidth: .infinity, alignment: .leading)
 				}
 			}
-		}
-	}
-	
-	struct ReminderView: View {
-		@State var isShowingReminderInfo = false
-		@State var hours = 4
-		
-		var body: some View {
-			VStack(spacing: 0) {
-				Button {
-					withAnimation {
-						isShowingReminderInfo.toggle()
-					}
-				} label: {
-					HStack(spacing: 12) {
-						Label {
-							Text("Remind Me")
-								.tint(.primary)
-						} icon: {
-							Image(systemName: "bell")
-						}
-						
-						if isShowingReminderInfo {
-							Spacer()
-						}
-						
-						Image(systemName: "chevron.down")
-							.rotationEffect(.degrees(isShowingReminderInfo ? 0 : -90))
-					}
-				}
-				.font(.headline.weight(.medium))
-				.padding(.boxPadding)
-				
-				if isShowingReminderInfo {
-					Divider()
-					
-					VStack(spacing: .boxPadding) {
-						Text("Iterecipe can remind you later, after your meal, to add a note reflecting on how this recipe came out and perhaps what changes to make next time.")
-							.font(.footnote)
-						
-						Divider()
-						
-						// TODO: show different UI if reminder set
-						HStack {
-							Button("Remind Me") {
-								// TODO: implement!
-							}
-							.buttonStyle(.borderedProminent)
-							
-							Text("in **^[\(hours) hours](inflect: true)**")
-							
-							Spacer()
-							
-							Stepper(value: $hours, in: 1...24) {}
-								.labelsHidden()
-						}
-					}
-					.padding(.boxPadding)
-					.transition(.stay)
-				}
-			}
-			.background(Color.textBackground)
-			.clipShape(RoundedRectangle(cornerRadius: .boxPadding))
 		}
 	}
 }

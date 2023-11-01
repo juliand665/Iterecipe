@@ -28,6 +28,9 @@
 		B9DA2B562AE87B2C0014AB18 /* HandyOperators in Frameworks */ = {isa = PBXBuildFile; productRef = B9DA2B552AE87B2C0014AB18 /* HandyOperators */; };
 		B9DA2B582AE87B480014AB18 /* ArrayBuilder in Frameworks */ = {isa = PBXBuildFile; productRef = B9DA2B572AE87B480014AB18 /* ArrayBuilder */; };
 		B9E57DE32AEECD77004B9422 /* Observation+Tracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E57DE22AEECD76004B9422 /* Observation+Tracking.swift */; };
+		B9E57DE52AF1E270004B9422 /* ChecklistControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E57DE42AF1E26F004B9422 /* ChecklistControls.swift */; };
+		B9E57DE72AF1E558004B9422 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E57DE62AF1E558004B9422 /* NotificationHandler.swift */; };
+		B9E57DE92AF1EDAA004B9422 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E57DE82AF1EDAA004B9422 /* CircleButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +54,9 @@
 		B98C76652ADF3C0D00D2944A /* ChecklistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistView.swift; sourceTree = "<group>"; };
 		B9DA2B4E2AE801CA0014AB18 /* ProcessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessManager.swift; sourceTree = "<group>"; };
 		B9E57DE22AEECD76004B9422 /* Observation+Tracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observation+Tracking.swift"; sourceTree = "<group>"; };
+		B9E57DE42AF1E26F004B9422 /* ChecklistControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistControls.swift; sourceTree = "<group>"; };
+		B9E57DE62AF1E558004B9422 /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
+		B9E57DE82AF1EDAA004B9422 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,8 +112,10 @@
 			children = (
 				B966AA5D2AD41F2F003AD8B4 /* IterecipeApp.swift */,
 				B966AA612AD41F2F003AD8B4 /* ContentView.swift */,
+				B9E57DE82AF1EDAA004B9422 /* CircleButton.swift */,
 				B952C3C72AD9758000500055 /* RevisionListView.swift */,
 				B952C3BF2AD8242100500055 /* RevisionView.swift */,
+				B9E57DE42AF1E26F004B9422 /* ChecklistControls.swift */,
 				B98C76652ADF3C0D00D2944A /* ChecklistView.swift */,
 				B952C3C32AD8314900500055 /* TextItemEditor.swift */,
 				B952C3C12AD82B7A00500055 /* UndoRedoButtons.swift */,
@@ -116,6 +124,7 @@
 				B952C3BD2AD78C2F00500055 /* RecipeImage.swift */,
 				B952C3C52AD8FBDF00500055 /* ErrorContainer.swift */,
 				B9DA2B4E2AE801CA0014AB18 /* ProcessManager.swift */,
+				B9E57DE62AF1E558004B9422 /* NotificationHandler.swift */,
 				B952C3BA2AD78A7F00500055 /* Helpers */,
 				B966AA632AD41F32003AD8B4 /* Assets.xcassets */,
 				B952C3CC2ADA23B900500055 /* Localizable.xcstrings */,
@@ -219,6 +228,7 @@
 			files = (
 				B952C3C02AD8242100500055 /* RevisionView.swift in Sources */,
 				B966AA5E2AD41F2F003AD8B4 /* IterecipeApp.swift in Sources */,
+				B9E57DE92AF1EDAA004B9422 /* CircleButton.swift in Sources */,
 				B9DA2B4F2AE801CA0014AB18 /* ProcessManager.swift in Sources */,
 				B9E57DE32AEECD77004B9422 /* Observation+Tracking.swift in Sources */,
 				B952C3BE2AD78C2F00500055 /* RecipeImage.swift in Sources */,
@@ -226,8 +236,10 @@
 				B952C3C42AD8314900500055 /* TextItemEditor.swift in Sources */,
 				B952C3C82AD9758000500055 /* RevisionListView.swift in Sources */,
 				B966AA602AD41F2F003AD8B4 /* IterecipeDocument.swift in Sources */,
+				B9E57DE72AF1E558004B9422 /* NotificationHandler.swift in Sources */,
 				B952C3BC2AD78A9000500055 /* SwiftUI+CrossPlatform.swift in Sources */,
 				B952C3C62AD8FBDF00500055 /* ErrorContainer.swift in Sources */,
+				B9E57DE52AF1E270004B9422 /* ChecklistControls.swift in Sources */,
 				B966AA622AD41F2F003AD8B4 /* ContentView.swift in Sources */,
 				B952C3B22AD6411F00500055 /* Recipe.swift in Sources */,
 				B952C3C22AD82B7A00500055 /* UndoRedoButtons.swift in Sources */,
