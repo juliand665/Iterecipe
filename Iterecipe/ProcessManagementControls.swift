@@ -123,8 +123,7 @@ private struct ReminderView: View {
 				} else {
 					Button("Remind Me") {
 						$error.task(errorTitle: "Could not schedule notification!") {
-							// FIXME: intentionally using 3-second hours for testing
-							try await process.scheduleReminder(withDelay: 3 * TimeInterval(hours), title: recipeTitle)
+							try await process.scheduleReminder(withDelay: 3600 * TimeInterval(hours), title: recipeTitle)
 						}
 					}
 					.buttonStyle(.borderedProminent)
