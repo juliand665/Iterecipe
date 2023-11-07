@@ -94,12 +94,10 @@ struct RevisionView: View {
 	
 	private func notes() -> some View {
 		RecipeSection("Notes", systemImage: "note.text") {
-			Button {
+			Button("Add Note", systemImage: "plus") {
 				withAnimation {
 					addNote()
 				}
-			} label: {
-				Label("Add Note", systemImage: "plus")
 			}
 			.labelStyle(.iconOnly)
 		} content: {
@@ -112,13 +110,12 @@ struct RevisionView: View {
 						
 						Spacer()
 						
-						Button {
+						Button("Remove Note", systemImage: "trash") {
 							withAnimation {
 								revision.notes.removeAll { $0.id == note.id }
 							}
-						} label: {
-							Image(systemName: "trash")
 						}
+						.labelStyle(.iconOnly)
 					}
 					
 					Divider()

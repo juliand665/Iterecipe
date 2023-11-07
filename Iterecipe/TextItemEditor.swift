@@ -16,10 +16,8 @@ struct TextItemEditor: View {
 				itemRow($item: $item)
 			}
 			
-			Button {
+			Button(addButtonLabel, systemImage: "plus") {
 				items.append(.init())
-			} label: {
-				Label(addButtonLabel, systemImage: "plus")
 			}
 		}
 		.scrollDismissesKeyboard(.interactively)

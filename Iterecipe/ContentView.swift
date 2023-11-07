@@ -148,24 +148,18 @@ private struct EditableImage: View {
 					.aspectRatio(contentMode: .fit)
 					.frame(maxHeight: 300)
 					.contextMenu {
-						Button {
+						Button("Replace Image", systemImage: "photo.on.rectangle.angled") {
 							isPickingImage = true
-						} label: {
-							Label("Replace Image", systemImage: "photo.on.rectangle.angled")
 						}
 						
-						Button {
+						Button("Remove Image", systemImage: "xmark") {
 							self.image = nil
-						} label: {
-							Label("Remove Image", systemImage: "xmark")
 						}
 					}
 					.padding(.bottom, 4)
 			} else {
-				Button {
+				Button("Add Image", systemImage: "photo.badge.plus") {
 					isPickingImage = true
-				} label: {
-					Label("Add Image", systemImage: "photo.badge.plus")
 				}
 			}
 		}

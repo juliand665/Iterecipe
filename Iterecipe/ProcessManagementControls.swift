@@ -42,12 +42,10 @@ struct ProcessManagementControls: View {
 	}
 	
 	private func startCookingButton() -> some View {
-		Button {
+		Button("Start Cooking", systemImage: "stove") {
 			withAnimation {
 				processManager.startProcess(forRecipeAt: recipeURL)
 			}
-		} label: {
-			Label("Start Cooking", systemImage: "stove")
 		}
 	}
 }

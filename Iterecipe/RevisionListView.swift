@@ -55,12 +55,10 @@ struct RevisionListView: View {
 						}
 					}
 					
-					Button {
+					Button("Delete Revision", systemImage: "trash") {
 						withAnimation {
 							_ = recipe.revisions.remove(at: index)
 						}
-					} label: {
-						Label("Delete Revision", systemImage: "trash")
 					}
 					.foregroundStyle(.red)
 					.disabled(recipe.revisions.count == 1)
@@ -70,12 +68,10 @@ struct RevisionListView: View {
 			}
 			
 			Section {
-				Button {
+				Button("Add New Revision", systemImage: "plus") {
 					withAnimation {
 						recipe.addRevision()
 					}
-				} label: {
-					Label("Add New Revision", systemImage: "plus")
 				}
 			}
 		}
