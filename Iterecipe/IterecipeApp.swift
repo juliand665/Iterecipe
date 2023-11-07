@@ -13,7 +13,7 @@ struct IterecipeApp: App {
 	var body: some Scene {
 		DocumentGroup(newDocument: IterecipeDocument(recipe: .init())) { file in
 			let filename = file.fileURL?.lastPathComponent
-			let basename = filename.map { $0.replacing(/.iterecipe$/, with: "") }
+			let basename = filename?.replacing(/.iterecipe$/, with: "")
 			
 			DocumentView(document: file.$document)
 				.navigationTitle(basename ?? "")

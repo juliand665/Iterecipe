@@ -73,7 +73,8 @@ struct ContentView: View {
 		}
 		.environment(undoManager)
 		.onChange(of: nsUndoManager, initial: true) {
-			undoManager.observe(nsUndoManager!)
+			guard let nsUndoManager else { return } // happens sometimes in previews
+			undoManager.observe(nsUndoManager)
 		}
 	}
 	
@@ -193,6 +194,7 @@ struct ContentViewPreview: View {
 	var body: some View {
 		NavigationStack {
 			ContentView(recipe: $recipe)
+				.environment(ProcessManager())
 		}
 	}
 }

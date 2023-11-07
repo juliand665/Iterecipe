@@ -47,6 +47,8 @@ struct RevisionView: View {
 					addNote()
 				}
 			}
+			
+			Button("No Thanks", role: .cancel) {}
 		} message: {
 			Text("It can be helpful to reflect on how your recipe turned out in order to drive future improvements!")
 		}
