@@ -113,6 +113,38 @@
 			path = Export;
 			sourceTree = "<group>";
 		};
+		B946A7B52AF9F59500D1D337 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				B9E57DE82AF1EDAA004B9422 /* CircleButton.swift */,
+				B952C3C12AD82B7A00500055 /* UndoRedoButtons.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		B946A7B62AF9F5DF00D1D337 /* Document */ = {
+			isa = PBXGroup;
+			children = (
+				B966AA5F2AD41F2F003AD8B4 /* IterecipeDocument.swift */,
+				B91B0D2126339B98007CB84A /* Recipe.swift */,
+				B952C3BD2AD78C2F00500055 /* RecipeImage.swift */,
+			);
+			path = Document;
+			sourceTree = "<group>";
+		};
+		B946A7B72AF9F68E00D1D337 /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				B952C3BF2AD8242100500055 /* RevisionView.swift */,
+				B952C3C32AD8314900500055 /* TextItemEditor.swift */,
+				B9E57DE42AF1E26F004B9422 /* ProcessManagementControls.swift */,
+				B98C76652ADF3C0D00D2944A /* ChecklistView.swift */,
+				B9DA2B4E2AE801CA0014AB18 /* ProcessManager.swift */,
+				B9E57DE62AF1E558004B9422 /* NotificationHandler.swift */,
+			);
+			path = Editor;
+			sourceTree = "<group>";
+		};
 		B952C3B32AD6417700500055 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +155,7 @@
 		B952C3BA2AD78A7F00500055 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				B952C3C52AD8FBDF00500055 /* ErrorContainer.swift */,
 				B9E57DE22AEECD76004B9422 /* Observation+Tracking.swift */,
 				B952C3BB2AD78A9000500055 /* SwiftUI+CrossPlatform.swift */,
 			);
@@ -134,20 +167,11 @@
 			children = (
 				B966AA5D2AD41F2F003AD8B4 /* IterecipeApp.swift */,
 				B966AA612AD41F2F003AD8B4 /* ContentView.swift */,
-				B946A7AC2AF9F26D00D1D337 /* Export */,
-				B9E57DE82AF1EDAA004B9422 /* CircleButton.swift */,
 				B952C3C72AD9758000500055 /* RevisionListView.swift */,
-				B952C3BF2AD8242100500055 /* RevisionView.swift */,
-				B9E57DE42AF1E26F004B9422 /* ProcessManagementControls.swift */,
-				B98C76652ADF3C0D00D2944A /* ChecklistView.swift */,
-				B952C3C32AD8314900500055 /* TextItemEditor.swift */,
-				B952C3C12AD82B7A00500055 /* UndoRedoButtons.swift */,
-				B966AA5F2AD41F2F003AD8B4 /* IterecipeDocument.swift */,
-				B91B0D2126339B98007CB84A /* Recipe.swift */,
-				B952C3BD2AD78C2F00500055 /* RecipeImage.swift */,
-				B952C3C52AD8FBDF00500055 /* ErrorContainer.swift */,
-				B9DA2B4E2AE801CA0014AB18 /* ProcessManager.swift */,
-				B9E57DE62AF1E558004B9422 /* NotificationHandler.swift */,
+				B946A7B72AF9F68E00D1D337 /* Editor */,
+				B946A7AC2AF9F26D00D1D337 /* Export */,
+				B946A7B62AF9F5DF00D1D337 /* Document */,
+				B946A7B52AF9F59500D1D337 /* General */,
 				B952C3BA2AD78A7F00500055 /* Helpers */,
 				B966AA632AD41F32003AD8B4 /* Assets.xcassets */,
 				B952C3CC2ADA23B900500055 /* Localizable.xcstrings */,
