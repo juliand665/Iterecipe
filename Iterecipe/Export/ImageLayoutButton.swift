@@ -117,14 +117,22 @@ struct ImageLayoutButton: View {
 	}
 }
 
-#Preview {
-	HStack {
+private func layoutPreview(titleAlignment: TitleAlignment) -> some View {
+	VStack {
 		ForEach(ImageLayout.allCases, id: \.self) {
 			ImageLayoutButton(
 				currentLayout: .constant(.imageAboveIngredients),
 				layout: $0,
-				titleAlignment: .centered
+				titleAlignment: titleAlignment
 			)
 		}
 	}
+}
+
+#Preview(traits: .sizeThatFitsLayout) {
+	HStack {
+		layoutPreview(titleAlignment: .centered)
+		layoutPreview(titleAlignment: .aboveProcess)
+	}
+	.padding()
 }

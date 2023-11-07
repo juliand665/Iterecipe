@@ -79,6 +79,7 @@ struct LayoutedRecipe: View {
 			.scaledToFit()
 			.clipShape(RoundedRectangle(cornerRadius: 20))
 			.matchedGeometryEffect(id: "image", in: geometryNamespace)
+			.zIndex(1)
 	}
 	
 	func textLines(for items: [TextItem]) -> some View {

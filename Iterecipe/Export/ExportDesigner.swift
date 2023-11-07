@@ -13,11 +13,11 @@ struct ExportDesigner: View {
 	@UserDefault.State("ExportDesigner.layout") var layout: PrintLayout = .init()
 	
 	@Environment(\.horizontalSizeClass) private var horizontalSizeClass
+	@Environment(\.verticalSizeClass) private var verticalSizeClass
 	
 	var body: some View {
 		GeometryReader { geometry in
-			let aspectRatio = geometry.size.width / geometry.size.height
-			let isWide = aspectRatio > 0.8
+			let isWide = verticalSizeClass == .compact || horizontalSizeClass == .regular
 			let layout = isWide
 			? AnyLayout(HStackLayout(spacing: 0))
 			: AnyLayout(VStackLayout(spacing: 0))
@@ -29,7 +29,7 @@ struct ExportDesigner: View {
 					.background(Color(.systemGroupedBackground))
 #endif
 					.frame(minWidth: isWide ? min(200, 0.3 * geometry.size.width) : nil)
-					.frame(minHeight: isWide ? nil : min(200, 0.3 * geometry.size.width))
+					.frame(minHeight: isWide ? nil : min(200, 0.4 * geometry.size.height))
 					.overlay(alignment: .bottomTrailing) {
 						exportControls().padding()
 					}

@@ -4,8 +4,14 @@ struct PrintLayout: Equatable, Codable {
 	var pageSize: PageSize = .localeDefault
 	var scaleFactor = 4.0
 	var ingredientsWidth = 250.0
-	var titleAlignment: TitleAlignment = .aboveProcess
 	var imageLayout: ImageLayout = .imageAboveIngredients
+	var titleAlignment: TitleAlignment = .aboveProcess {
+		didSet {
+			if titleAlignment == .aboveProcess, imageLayout == .imageAboveBoth {
+				imageLayout = .imageOnTop
+			}
+		}
+	}
 	
 	var scaledWidth: Double {
 		pageSize.width * scaleFactor
@@ -30,6 +36,14 @@ struct PageSize: Equatable, Codable {
 	
 	var size: CGSize { .init(width: width, height: height) }
 	var aspectRatio: Double { width / height }
+	
+	func rotated() -> Self {
+		.init(width: height, height: width)
+	}
+	
+	mutating func rotate() {
+		self = rotated()
+	}
 }
 
 enum TitleAlignment: Equatable, Codable, CaseIterable {

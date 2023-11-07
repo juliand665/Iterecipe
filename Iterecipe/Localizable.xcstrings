@@ -81,6 +81,9 @@
     "Customize Export" : {
 
     },
+    "Customize Layout" : {
+
+    },
     "Delete Revision" : {
 
     },
@@ -249,6 +252,9 @@
           }
         }
       }
+    },
+    "Rotate" : {
+
     },
     "Scale Factor" : {
 
