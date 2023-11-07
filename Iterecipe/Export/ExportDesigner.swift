@@ -1,4 +1,5 @@
 import SwiftUI
+import UserDefault
 #if os(macOS)
 import PDFKit
 #endif
@@ -8,8 +9,8 @@ struct ExportDesigner: View {
 	var recipe: Recipe
 	var revision: Recipe.Revision
 	
-	// TODO: store in recipe, or maybe a presets system?
-	@State var layout: PrintLayout = .init()
+	// TODO: maybe a presets system?
+	@UserDefault.State("ExportDesigner.layout") var layout: PrintLayout = .init()
 	
 	@Environment(\.horizontalSizeClass) private var horizontalSizeClass
 	
@@ -92,6 +93,8 @@ struct ExportDesigner: View {
 		LayoutedRecipe(recipe: recipe, revision: revision, layout: layout)
 	}
 }
+
+extension PrintLayout: DefaultsValueConvertible {}
 
 #Preview {
 	NavigationStack {

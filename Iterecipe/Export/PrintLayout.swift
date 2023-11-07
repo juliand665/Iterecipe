@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct PrintLayout: Equatable {
+struct PrintLayout: Equatable, Codable {
 	var pageSize: PageSize = .localeDefault
 	var scaleFactor = 4.0
 	var ingredientsWidth = 250.0
@@ -16,7 +16,7 @@ struct PrintLayout: Equatable {
 	}
 }
 
-struct PageSize: Equatable {
+struct PageSize: Equatable, Codable {
 	private static let usLetterRegions: Set<Locale.Region> = [
 		.unitedStates, .canada, .chile, .colombia, .costaRica, .mexico, .panama, .guatemala, .dominicanRepublic, .philippines,
 	]
@@ -32,7 +32,7 @@ struct PageSize: Equatable {
 	var aspectRatio: Double { width / height }
 }
 
-enum TitleAlignment: Equatable, CaseIterable {
+enum TitleAlignment: Equatable, Codable, CaseIterable {
 	case leading
 	case centered
 	case aboveProcess
@@ -49,7 +49,7 @@ enum TitleAlignment: Equatable, CaseIterable {
 	}
 }
 
-enum ImageLayout: Equatable, CaseIterable {
+enum ImageLayout: Equatable, Codable, CaseIterable {
 	case noImage
 	case imageOnTop
 	case imageAboveIngredients
