@@ -1,4 +1,4 @@
-import Foundation
+import SwiftUI
 import ArrayBuilder
 import HandyOperators
 
@@ -68,7 +68,7 @@ extension Recipe {
 	static let example = Self(
 		title: "Example Recipe",
 		source: "example.com/recipes/example",
-		image: nil,
+		image: .example,
 		revisions: .init {
 			let initial = Revision(
 				dateCreated: .init(timeIntervalSinceNow: -100_000),
@@ -86,6 +86,8 @@ extension Recipe {
 					"The third step, which is a lot longer than the other steps we've seen so far.",
 					"The fourth step.",
 					"One final step to finish it all up and get it out there after all this work to wrap to a new line.",
+					"Actually I felt like another step because this process was proportionally much shorter than it would usually be.",
+					"Bon appétit!",
 				],
 				notes: ["an old note"]
 			)
@@ -111,4 +113,18 @@ extension Recipe {
 			}
 		}
 	)
+}
+
+extension RecipeImage {
+#if os(macOS)
+	static let example: Self? = nil
+#else
+	static let example = try? Self(
+		imageData: #imageLiteral(resourceName: "chocolate ice cream").heicData()!
+	)
+#endif
+}
+
+#Preview {
+	RecipeImage.example?.image.resizable().scaledToFit()
 }
