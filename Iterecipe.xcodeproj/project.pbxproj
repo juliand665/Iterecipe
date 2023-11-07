@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B946A7AB2AF3399600D1D337 /* ExportDesigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B946A7AA2AF3399600D1D337 /* ExportDesigner.swift */; };
+		B946A7AE2AF9F28000D1D337 /* PrintLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B946A7AD2AF9F28000D1D337 /* PrintLayout.swift */; };
+		B946A7B02AF9F2F600D1D337 /* LayoutedRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B946A7AF2AF9F2F600D1D337 /* LayoutedRecipe.swift */; };
+		B946A7B22AF9F32B00D1D337 /* ImageLayoutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B946A7B12AF9F32B00D1D337 /* ImageLayoutButton.swift */; };
+		B946A7B42AF9F43F00D1D337 /* LayoutCustomizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B946A7B32AF9F43F00D1D337 /* LayoutCustomizer.swift */; };
 		B952C3B22AD6411F00500055 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91B0D2126339B98007CB84A /* Recipe.swift */; };
 		B952C3BC2AD78A9000500055 /* SwiftUI+CrossPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = B952C3BB2AD78A9000500055 /* SwiftUI+CrossPlatform.swift */; };
 		B952C3BE2AD78C2F00500055 /* RecipeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B952C3BD2AD78C2F00500055 /* RecipeImage.swift */; };
@@ -35,6 +40,11 @@
 
 /* Begin PBXFileReference section */
 		B91B0D2126339B98007CB84A /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		B946A7AA2AF3399600D1D337 /* ExportDesigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportDesigner.swift; sourceTree = "<group>"; };
+		B946A7AD2AF9F28000D1D337 /* PrintLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintLayout.swift; sourceTree = "<group>"; };
+		B946A7AF2AF9F2F600D1D337 /* LayoutedRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutedRecipe.swift; sourceTree = "<group>"; };
+		B946A7B12AF9F32B00D1D337 /* ImageLayoutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLayoutButton.swift; sourceTree = "<group>"; };
+		B946A7B32AF9F43F00D1D337 /* LayoutCustomizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCustomizer.swift; sourceTree = "<group>"; };
 		B952C3BB2AD78A9000500055 /* SwiftUI+CrossPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+CrossPlatform.swift"; sourceTree = "<group>"; };
 		B952C3BD2AD78C2F00500055 /* RecipeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeImage.swift; sourceTree = "<group>"; };
 		B952C3BF2AD8242100500055 /* RevisionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevisionView.swift; sourceTree = "<group>"; };
@@ -91,6 +101,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		B946A7AC2AF9F26D00D1D337 /* Export */ = {
+			isa = PBXGroup;
+			children = (
+				B946A7AA2AF3399600D1D337 /* ExportDesigner.swift */,
+				B946A7B32AF9F43F00D1D337 /* LayoutCustomizer.swift */,
+				B946A7B12AF9F32B00D1D337 /* ImageLayoutButton.swift */,
+				B946A7AF2AF9F2F600D1D337 /* LayoutedRecipe.swift */,
+				B946A7AD2AF9F28000D1D337 /* PrintLayout.swift */,
+			);
+			path = Export;
+			sourceTree = "<group>";
+		};
 		B952C3B32AD6417700500055 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +134,7 @@
 			children = (
 				B966AA5D2AD41F2F003AD8B4 /* IterecipeApp.swift */,
 				B966AA612AD41F2F003AD8B4 /* ContentView.swift */,
+				B946A7AC2AF9F26D00D1D337 /* Export */,
 				B9E57DE82AF1EDAA004B9422 /* CircleButton.swift */,
 				B952C3C72AD9758000500055 /* RevisionListView.swift */,
 				B952C3BF2AD8242100500055 /* RevisionView.swift */,
@@ -226,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B946A7AE2AF9F28000D1D337 /* PrintLayout.swift in Sources */,
 				B952C3C02AD8242100500055 /* RevisionView.swift in Sources */,
 				B966AA5E2AD41F2F003AD8B4 /* IterecipeApp.swift in Sources */,
 				B9E57DE92AF1EDAA004B9422 /* CircleButton.swift in Sources */,
@@ -234,14 +258,18 @@
 				B952C3BE2AD78C2F00500055 /* RecipeImage.swift in Sources */,
 				B98C76662ADF3C0D00D2944A /* ChecklistView.swift in Sources */,
 				B952C3C42AD8314900500055 /* TextItemEditor.swift in Sources */,
+				B946A7AB2AF3399600D1D337 /* ExportDesigner.swift in Sources */,
 				B952C3C82AD9758000500055 /* RevisionListView.swift in Sources */,
 				B966AA602AD41F2F003AD8B4 /* IterecipeDocument.swift in Sources */,
 				B9E57DE72AF1E558004B9422 /* NotificationHandler.swift in Sources */,
 				B952C3BC2AD78A9000500055 /* SwiftUI+CrossPlatform.swift in Sources */,
+				B946A7B42AF9F43F00D1D337 /* LayoutCustomizer.swift in Sources */,
 				B952C3C62AD8FBDF00500055 /* ErrorContainer.swift in Sources */,
 				B9E57DE52AF1E270004B9422 /* ProcessManagementControls.swift in Sources */,
+				B946A7B22AF9F32B00D1D337 /* ImageLayoutButton.swift in Sources */,
 				B966AA622AD41F2F003AD8B4 /* ContentView.swift in Sources */,
 				B952C3B22AD6411F00500055 /* Recipe.swift in Sources */,
+				B946A7B02AF9F2F600D1D337 /* LayoutedRecipe.swift in Sources */,
 				B952C3C22AD82B7A00500055 /* UndoRedoButtons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,6 +437,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -459,6 +488,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

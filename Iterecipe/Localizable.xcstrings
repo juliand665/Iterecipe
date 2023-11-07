@@ -33,6 +33,12 @@
         }
       }
     },
+    "×" : {
+
+    },
+    "Above Process" : {
+
+    },
     "Add Image" : {
 
     },
@@ -60,6 +66,9 @@
     "Cancel" : {
 
     },
+    "Centered" : {
+
+    },
     "Could not load recipe!" : {
 
     },
@@ -69,7 +78,13 @@
     "Current Revision" : {
 
     },
+    "Customize Export" : {
+
+    },
     "Delete Revision" : {
+
+    },
+    "DIN A4" : {
 
     },
     "Done" : {
@@ -81,10 +96,28 @@
     "Finish Cooking" : {
 
     },
+    "Height" : {
+
+    },
     "Identical to previous revision." : {
 
     },
+    "Image above Ingredients" : {
+
+    },
+    "Image above Process" : {
+
+    },
+    "Image below Title" : {
+
+    },
     "Image could not be set!" : {
+
+    },
+    "Image Layout" : {
+
+    },
+    "Image on Top" : {
 
     },
     "in **^[%lld hours](inflect: true)**" : {
@@ -99,6 +132,9 @@
     "Ingredients" : {
 
     },
+    "Ingredients Width" : {
+
+    },
     "Initial Version" : {
 
     },
@@ -111,10 +147,19 @@
     "Iterecipe can remind you later, after your meal, to add a note reflecting on how this recipe came out and perhaps what changes to make next time." : {
 
     },
+    "Left Edge" : {
+
+    },
+    "mm" : {
+
+    },
     "moved" : {
 
     },
     "Next Revision" : {
+
+    },
+    "No Image" : {
 
     },
     "No Thanks" : {
@@ -132,7 +177,25 @@
     "OK" : {
 
     },
+    "Page Size" : {
+
+    },
+    "Preset: DIN A4" : {
+
+    },
+    "Preset: US Letter" : {
+
+    },
+    "Presets" : {
+
+    },
     "Previous Revision" : {
+
+    },
+    "Print" : {
+
+    },
+    "Print/Export PDF" : {
 
     },
     "Process" : {
@@ -162,10 +225,16 @@
     "Remove Image" : {
 
     },
+    "Remove Note" : {
+
+    },
     "removed" : {
 
     },
     "Replace Image" : {
+
+    },
+    "Reset to Defaults" : {
 
     },
     "Revision %lld" : {
@@ -180,6 +249,9 @@
           }
         }
       }
+    },
+    "Scale Factor" : {
+
     },
     "Source" : {
 
@@ -199,7 +271,16 @@
     "Steps" : {
 
     },
+    "Title Alignment" : {
+
+    },
     "Undo" : {
+
+    },
+    "US Letter" : {
+
+    },
+    "Width" : {
 
     }
   },

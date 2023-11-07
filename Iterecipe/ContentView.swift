@@ -19,7 +19,7 @@ struct ContentView: View {
 	var body: some View {
 		ScrollView {
 			VStack(spacing: 32) {
-				VStack {
+				VStack(spacing: 8) {
 					EditableImage(image: $recipe.image)
 					
 					Divider()
@@ -42,14 +42,37 @@ struct ContentView: View {
 							}
 						}
 					}
+					
+					Divider()
+					
+					NavigationLink {
+						ExportDesigner(recipe: recipe, revision: recipe.revisions[revisionIndex])
+					} label: {
+						HStack {
+							Label {
+								Text("Print/Export PDF")
+									.tint(.primary)
+							} icon: {
+								Image(systemName: "printer")
+							}
+							
+							Spacer()
+							
+							Image(systemName: "chevron.right")
+								.imageScale(.small)
+								.foregroundStyle(.tertiary)
+								.tint(.primary)
+						}
+						.padding(6)
+					}
+					.fontWeight(.medium)
+					
+					Divider()
+					
+					RevisionSwitcher(recipe: $recipe, revisionIndexFromEnd: $revisionIndexFromEnd)
 				}
 				
 				ProcessManagementControls(prompts: prompts, recipeTitle: recipe.title)
-				
-				VStack {
-					revisionSwitcher()
-					Divider()
-				}
 				
 				RevisionView(revision: $recipe.revisions[revisionIndex], prompts: prompts)
 			}
@@ -59,6 +82,7 @@ struct ContentView: View {
 		.scrollDismissesKeyboard(.interactively)
 		.background(Color.canvasBackground)
 		//.textFieldsWithoutFocusRing()
+		.buttonStyle(.borderless)
 		.background( // cheeky keyboard shortcuts lol
 			Group {
 				Button("Done", action: unfocusTextField).keyboardShortcut(.escape, modifiers: [])
@@ -78,52 +102,6 @@ struct ContentView: View {
 		}
 	}
 	
-	func revisionSwitcher() -> some View {
-		HStack {
-			CircleButton("Previous Revision", systemImage: "chevron.left") {
-				withAnimation {
-					revisionIndexFromEnd += 1
-				}
-			}
-			.disabled(revisionIndexFromEnd >= recipe.revisions.count - 1)
-			
-			NavigationLink {
-				RevisionListView(recipe: $recipe, revisionIndexFromEnd: $revisionIndexFromEnd)
-					.environment(undoManager)
-			} label: {
-				HStack {
-					Group {
-						if revisionIndexFromEnd == 0 {
-							Text("Current Revision")
-						} else {
-							Text("Revision \(revisionIndex + 1)/\(recipe.revisions.count)")
-						}
-					}
-					.tint(.primary)
-					
-					Image(systemName: "chevron.down")
-						.imageScale(.small)
-				}
-			}
-			.frame(maxWidth: .infinity)
-			
-			if revisionIndexFromEnd == 0 {
-				CircleButton("Add New Revision", systemImage: "plus") {
-					withAnimation {
-						recipe.addRevision()
-					}
-				}
-			} else {
-				CircleButton("Next Revision", systemImage: "chevron.right") {
-					withAnimation {
-						revisionIndexFromEnd -= 1
-					}
-				}
-			}
-		}
-		.fontWeight(.medium)
-	}
-	
 	func sourceLink() -> URL? {
 		let string = recipe.source
 		guard !string.isEmpty else { return nil }
@@ -131,6 +109,75 @@ struct ContentView: View {
 		guard let url = URL(string: withScheme) else { return nil }
 		guard url.host()?.contains(/\w.\w/) == true else { return nil }
 		return url
+	}
+}
+
+private struct RevisionSwitcher: View {
+	@Binding var recipe: Recipe
+	@Binding var revisionIndexFromEnd: Int
+	@State var isShowingPicker = false
+	
+	@Environment(ObservableUndoManager.self) private var undoManager
+	
+	var body: some View {
+		HStack {
+			Button("Previous Revision", systemImage: "chevron.left") {
+				withAnimation {
+					revisionIndexFromEnd += 1
+				}
+			}
+			.disabled(revisionIndexFromEnd >= recipe.revisions.count - 1)
+			
+			Button {
+				isShowingPicker = true
+			} label: {
+				HStack {
+					if revisionIndexFromEnd == 0 {
+						Text("Current Revision")
+					} else {
+						let index = recipe.revisions.count - revisionIndexFromEnd
+						Text("Revision \(index)/\(recipe.revisions.count)")
+					}
+					
+					Image(systemName: "chevron.down")
+						.imageScale(.small)
+						.foregroundStyle(.accent)
+				}
+			}
+			.frame(maxWidth: .infinity)
+			.buttonStyle(.plain)
+			
+			if revisionIndexFromEnd == 0 {
+				Button("Add New Revision", systemImage: "plus") {
+					withAnimation {
+						recipe.addRevision()
+					}
+				}
+			} else {
+				Button("Next Revision", systemImage: "chevron.right") {
+					withAnimation {
+						revisionIndexFromEnd -= 1
+					}
+				}
+			}
+		}
+		.labelStyle(.iconOnly)
+		.buttonStyle(.circular())
+		.fontWeight(.medium)
+		.sheet(isPresented: $isShowingPicker) {
+			NavigationStack {
+				RevisionListView(recipe: $recipe, revisionIndexFromEnd: $revisionIndexFromEnd)
+					.toolbar {
+						ToolbarItem(placement: .navigation) {
+							Button("Done") {
+								isShowingPicker = false
+							}
+							.fontWeight(.medium)
+						}
+					}
+			}
+			.environment(undoManager)
+		}
 	}
 }
 

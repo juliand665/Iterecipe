@@ -12,28 +12,48 @@ struct ProcessManagementControls: View {
 	@Bindable var prompts: CookingPrompts
 	var recipeTitle: String // need this for the reminder notification title
 	
+	@State var isShowingReminderInfo = false
+	
 	@Environment(\.recipeURL) private var recipeURL
 	@Environment(ProcessManager.self) private var processManager
 	
 	var body: some View {
-		VStack(spacing: .boxPadding) {
+		ZStack {
 			if let currentProcess = processManager.process(forRecipeAt: recipeURL) {
-				Button {
-					withAnimation {
-						processManager.endProcess(forRecipeAt: currentProcess.recipeURL)
-						prompts.isShowingNotePrompt = true
+				VStack(spacing: .boxPadding) {
+					HStack {
+						Button("Finish Cooking", systemImage: "checkmark") {
+							withAnimation {
+								processManager.endProcess(forRecipeAt: currentProcess.recipeURL)
+								prompts.isShowingNotePrompt = true
+							}
+						}
+						.buttonStyle(.borderedProminent)
+						.layoutPriority(1)
+						
+						Toggle(isOn: $isShowingReminderInfo.animation()) {
+							Label("Remind Me", systemImage: "bell")
+						}
+						.labelStyle(.iconOnly)
+						.toggleStyle(.button)
 					}
-				} label: {
-					Label("Finish Cooking", systemImage: "checkmark")
+					
+					if isShowingReminderInfo {
+						Divider()
+						
+						ReminderView(recipeTitle: recipeTitle, process: currentProcess)
+							.fontWeight(.regular)
+					}
 				}
-				.buttonStyle(.borderedProminent)
-				
-				ReminderView(recipeTitle: recipeTitle, process: currentProcess)
+				.padding(.boxPadding)
+				.background(Color.textBackground)
+				.clipShape(RoundedRectangle(cornerRadius: .boxPadding))
 			} else {
 				startCookingButton()
 					.buttonStyle(.borderedProminent)
 			}
 		}
+		.fontWeight(.medium)
 		.confirmationDialog("Start Cooking?", isPresented: $prompts.isShowingStartPrompt, titleVisibility: .visible) {
 			startCookingButton()
 		} message: {
@@ -55,52 +75,10 @@ private struct ReminderView: View {
 	var recipeTitle: String
 	@Bindable var process: Process
 	
-	@State var isShowingReminderInfo = false
 	@State var hours = 4
 	@State var error = ErrorContainer()
 	
 	var body: some View {
-		VStack(spacing: 0) {
-			Button {
-				withAnimation {
-					isShowingReminderInfo.toggle()
-				}
-			} label: {
-				HStack(spacing: 12) {
-					Label {
-						Text("Remind Me")
-							.tint(.primary)
-					} icon: {
-						Image(systemName: "bell")
-					}
-					
-					if isShowingReminderInfo {
-						Spacer()
-					}
-					
-					Image(systemName: "chevron.down")
-						.rotationEffect(.degrees(isShowingReminderInfo ? 0 : -90))
-				}
-			}
-			.font(.headline.weight(.medium))
-			.padding(.boxPadding)
-			
-			if isShowingReminderInfo {
-				reminderInfo()
-			}
-		}
-		.background(Color.textBackground)
-		.clipShape(RoundedRectangle(cornerRadius: .boxPadding))
-		.alert(for: $error)
-		.onAppear {
-			process.clearPastReminder()
-		}
-	}
-	
-	@ViewBuilder
-	func reminderInfo() -> some View {
-		Divider()
-		
 		VStack(spacing: .boxPadding) {
 			Text("Iterecipe can remind you later, after your meal, to add a note reflecting on how this recipe came out and perhaps what changes to make next time.")
 				.font(.footnote)
@@ -125,6 +103,7 @@ private struct ReminderView: View {
 						}
 					}
 					.buttonStyle(.borderedProminent)
+					.fontWeight(.medium)
 					
 					Text("in **^[\(hours) hours](inflect: true)**")
 					
@@ -135,7 +114,10 @@ private struct ReminderView: View {
 				}
 			}
 		}
-		.padding(.boxPadding)
 		.transition(.stay)
+		.alert(for: $error)
+		.onAppear {
+			process.clearPastReminder()
+		}
 	}
 }
