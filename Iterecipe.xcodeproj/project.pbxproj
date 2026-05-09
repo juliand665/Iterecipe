@@ -28,6 +28,7 @@
 		B966AA642AD41F32003AD8B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B966AA632AD41F32003AD8B4 /* Assets.xcassets */; };
 		B966AA692AD41F32003AD8B4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B966AA682AD41F32003AD8B4 /* Preview Assets.xcassets */; };
 		B98C76662ADF3C0D00D2944A /* ChecklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98C76652ADF3C0D00D2944A /* ChecklistView.swift */; };
+		B99F19F12FAF2F300050CC9E /* Iterecipe.icon in Resources */ = {isa = PBXBuildFile; fileRef = B99F19F02FAF2F300050CC9E /* Iterecipe.icon */; };
 		B9DA2B4F2AE801CA0014AB18 /* ProcessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DA2B4E2AE801CA0014AB18 /* ProcessManager.swift */; };
 		B9DA2B522AE8794E0014AB18 /* UserDefault in Frameworks */ = {isa = PBXBuildFile; productRef = B9DA2B512AE8794E0014AB18 /* UserDefault */; };
 		B9DA2B562AE87B2C0014AB18 /* HandyOperators in Frameworks */ = {isa = PBXBuildFile; productRef = B9DA2B552AE87B2C0014AB18 /* HandyOperators */; };
@@ -62,6 +63,7 @@
 		B966AA662AD41F32003AD8B4 /* Iterecipe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Iterecipe.entitlements; sourceTree = "<group>"; };
 		B966AA682AD41F32003AD8B4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B98C76652ADF3C0D00D2944A /* ChecklistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistView.swift; sourceTree = "<group>"; };
+		B99F19F02FAF2F300050CC9E /* Iterecipe.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = Iterecipe.icon; sourceTree = "<group>"; };
 		B9DA2B4E2AE801CA0014AB18 /* ProcessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessManager.swift; sourceTree = "<group>"; };
 		B9E57DE22AEECD76004B9422 /* Observation+Tracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observation+Tracking.swift"; sourceTree = "<group>"; };
 		B9E57DE42AF1E26F004B9422 /* ProcessManagementControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessManagementControls.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 		B966AA5C2AD41F2F003AD8B4 /* Iterecipe */ = {
 			isa = PBXGroup;
 			children = (
+				B99F19F02FAF2F300050CC9E /* Iterecipe.icon */,
 				B966AA5D2AD41F2F003AD8B4 /* IterecipeApp.swift */,
 				B966AA612AD41F2F003AD8B4 /* ContentView.swift */,
 				B952C3C72AD9758000500055 /* RevisionListView.swift */,
@@ -263,6 +266,7 @@
 				B966AA692AD41F32003AD8B4 /* Preview Assets.xcassets in Resources */,
 				B966AA642AD41F32003AD8B4 /* Assets.xcassets in Resources */,
 				B952C3CD2ADA23B900500055 /* Localizable.xcstrings in Resources */,
+				B99F19F12FAF2F300050CC9E /* Iterecipe.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,7 +425,7 @@
 		B966AA6B2AD41F32003AD8B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = Iterecipe;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -472,7 +476,7 @@
 		B966AA6C2AD41F32003AD8B4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = Iterecipe;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
